@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="Page not found — Shivapuri Baba"
+	description="The page you were looking for could not be found."
+>
+	<div class="py-20 md:py-28">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>Page not found</h1>
+				<p>
+					The page you were looking for isn't here — it may have been moved, or
+					the link may be mistaken.
+				</p>
+				<p>
+					<a href="/">Return to the home page →</a>
+				</p>
+			</article>
+
+			<nav
+				class="font-sans mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="Go to"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">Or read</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/biography" class="underline-offset-2 hover:underline">Biography</a
+						><span class="text-[color:var(--color-muted)]">
+							— the life, drawn only from first-hand sources</span
+						>
+					</li>
+					<li>
+						<a href="/teachings/right-living" class="underline-offset-2 hover:underline"
+							>Right Living (Swadharma)</a
+						><span class="text-[color:var(--color-muted)]"> — the teaching set out in full</span>
+					</li>
+					<li>
+						<a href="/books" class="underline-offset-2 hover:underline">Books &amp; Media</a
+						><span class="text-[color:var(--color-muted)]">
+							— where to find the sources</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>
