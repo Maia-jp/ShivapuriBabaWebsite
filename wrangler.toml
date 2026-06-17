@@ -1,7 +1,14 @@
-# Cloudflare Pages configuration.
-# The site is fully static (Astro `output: "static"`), so no Workers runtime or
-# adapter is required — Pages serves the built `dist/` directory directly.
+# Cloudflare Workers configuration (static assets).
+# The site is fully static (Astro `output: "static"`), so there is no Worker
+# script — Cloudflare serves the built `dist/` directory directly via the
+# Static Assets feature. Deploy with: npx wrangler deploy
+#
+# `_headers` (in public/) is applied automatically; `not_found_handling`
+# serves our custom 404.html for unknown routes.
 
 name = "shivapuri-baba-website"
-pages_build_output_dir = "dist"
 compatibility_date = "2026-06-17"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
