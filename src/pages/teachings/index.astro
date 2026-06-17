@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Add future teaching sub-pages here and they appear in the list below.
+const teachings = [
+	{
+		href: '/teachings/right-living',
+		title: 'Right Living (Swadharma)',
+		summary:
+			"The Baba's central teaching: three disciplines — physical, moral, and spiritual — that together form the Right Life, drawn only from first-hand sources.",
+	},
+];
+---
+
+<Layout
+	title="Teachings of Shivapuri Baba"
+	description="The teachings of Shivapuri Baba — the Right Life, or Swadharma — presented from first-hand sources with full citations."
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>Teachings</h1>
+				<p>
+					Shivapuri Baba taught a single practical discipline he called the
+					<strong>Right Life</strong>, or <em>Swadharma</em>. The pages here
+					present it from the records of those who learned it directly from him,
+					with full source citations.
+				</p>
+			</article>
+
+			<ul class="mt-10 space-y-8 border-t border-[color:var(--color-border)] pt-10">
+				{
+					teachings.map((t) => (
+						<li>
+							<a
+								href={t.href}
+								class="font-serif text-xl underline-offset-2 hover:underline"
+							>
+								{t.title}
+							</a>
+							<p class="mt-1 text-[color:var(--color-muted)]">{t.summary}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>

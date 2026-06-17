@@ -1,43 +1,71 @@
-# Astro Starter Kit: Minimal
+# Shivapuri Baba
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+An open, non-profit website dedicated to the life, teachings, and legacy of the
+mystic **Shivapuri Baba**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This project is not about its authors or contributors. It exists solely to
+carry **Shivapuri Baba's message** faithfully, freely, and to anyone who seeks
+it. Those who build it are stewards, not subjects.
 
-## 🚀 Project Structure
+## What this is
 
-Inside of your Astro project, you'll see the following folders and files:
+A free, fast, and trustworthy place to read about Shivapuri Baba — grounded in
+sources rather than rumor, beautiful and effortless to read, and open for anyone
+to study, audit, or build upon.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Our principles
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Every decision here serves four pillars. They are the cornerstone of the project
+and are documented in full in **[PRINCIPLES.md](./PRINCIPLES.md)**:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. **Non-Profit, Always** — no ads, no paywalls, no trackers, never monetized.
+2. **Academic Rigor Over Rumor** — every claim sourced; fact, interpretation, and
+   tradition kept clearly distinct.
+3. **The Best Possible Reading Experience** — fast, reliable, accessible, and calm.
+4. **Open Source** — public code and content, developed transparently.
 
-Any static assets, like images, can be placed in the `public/` directory.
+When a choice conflicts with a pillar, the pillar wins.
 
-## 🧞 Commands
+The visual design follows a minimal, black-and-white, monastic aesthetic built
+entirely around reading — documented in **[DESIGN.md](./DESIGN.md)**.
 
-All commands are run from the root of the project, from a terminal:
+## Tech stack
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+Built with [Astro](https://astro.build) — chosen for speed, minimal JavaScript,
+and resilient static output that aligns with pillar 3. Styling uses Tailwind CSS
+with the `@tailwindcss/typography` plugin for readable long-form content, and the
+site deploys as static files to **Cloudflare Pages**. See
+**[TECHSTACK.md](./TECHSTACK.md)** for the full stack and the reasoning behind
+each choice.
 
-## 👀 Want to learn more?
+## Local development
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+All commands run from the project root:
+
+| Command         | Action                                       |
+| :-------------- | :------------------------------------------- |
+| `pnpm install`  | Install dependencies                         |
+| `pnpm dev`      | Start the dev server at `localhost:4321`     |
+| `pnpm build`    | Build the production site to `./dist/`       |
+| `pnpm preview`  | Preview the production build locally         |
+| `pnpm astro ...`| Run Astro CLI commands                       |
+
+Requires Node `>=22.12.0`.
+
+## Contributing
+
+Contributions are welcome — corrections, better sources, accessibility fixes, and
+performance improvements especially. Please read [PRINCIPLES.md](./PRINCIPLES.md)
+first; contributions are evaluated against the four pillars. Hold content to a
+scholarly standard: cite primary sources, and never present unverified stories as
+established fact.
+
+## License
+
+This project is **dual-licensed** so that both the code and the message stay free:
+
+- **Code** — [MIT License](./LICENSE)
+- **Content** — [CC BY-SA 4.0](./LICENSE-CONTENT.md)
+
+Third-party quotations, source texts, and images remain under their own copyright
+and are credited at the point of use.

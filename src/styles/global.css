@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ---------------------------------------------------------------------------
+   Design foundation — see DESIGN.md
+   Minimal, black-and-white, monastic. Serif for the message, sans for the chrome.
+   --------------------------------------------------------------------------- */
+
+/* Font families exposed as Tailwind utilities (font-serif / font-sans).
+   The serif is self-hosted (EB Garamond, imported in Layout.astro); the sans is
+   the platform system stack — zero bytes, instant, reliable. */
+@theme {
+	--font-serif: "EB Garamond Variable", Georgia, Cambria, "Times New Roman", serif;
+	--font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Semantic colour tokens. Ink on paper — never pure #000 / #fff.
+   Both modes get equal care; dark mode follows the reader's system preference. */
+:root {
+	--color-bg: #faf8f4; /* warm off-white paper */
+	--color-text: #1c1917; /* soft near-black ink */
+	--color-muted: #78716c; /* secondary text, captions, metadata */
+	--color-border: #e7e3da; /* hairline rules */
+	--color-selection: #ece7dc; /* text selection wash */
+
+	color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #15140f; /* warm off-black */
+		--color-text: #e8e3d8; /* soft off-white ink */
+		--color-muted: #9c958a;
+		--color-border: #2c2a24;
+		--color-selection: #2f2c24;
+	}
+}
+
+/* Base reading surface. */
+html {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-serif);
+	/* Slightly larger base so the delicate old-style serif reads comfortably. */
+	font-size: 18px;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+	background-color: var(--color-selection);
+}
+
+/* Visible, quiet focus for keyboard users (accessibility, pillar 3). */
+:focus-visible {
+	outline: 2px solid var(--color-text);
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Long-form content (Tailwind Typography `prose`) tuned to the palette.
+   Links are distinguished by underline + weight, not colour. Headings stay
+   serif — they are part of the message, not the chrome.
+   --------------------------------------------------------------------------- */
+.prose {
+	--tw-prose-body: var(--color-text);
+	--tw-prose-headings: var(--color-text);
+	--tw-prose-lead: var(--color-muted);
+	--tw-prose-links: var(--color-text);
+	--tw-prose-bold: var(--color-text);
+	--tw-prose-counters: var(--color-muted);
+	--tw-prose-bullets: var(--color-muted);
+	--tw-prose-hr: var(--color-border);
+	--tw-prose-quotes: var(--color-muted);
+	--tw-prose-quote-borders: var(--color-border);
+	--tw-prose-captions: var(--color-muted);
+	--tw-prose-code: var(--color-text);
+	--tw-prose-pre-code: var(--color-text);
+	--tw-prose-pre-bg: var(--color-border);
+	--tw-prose-th-borders: var(--color-border);
+	--tw-prose-td-borders: var(--color-border);
+
+	/* Comfortable measure (~65 characters) and book-like rhythm. */
+	max-width: 65ch;
+	font-family: var(--font-serif);
+	line-height: 1.75;
+	text-wrap: pretty;
+}
+
+/* Links: ink-coloured, underlined, subtle — quiet until hovered. */
+.prose a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+	text-decoration-color: var(--color-muted);
+	transition: text-decoration-color 150ms ease;
+}
+
+.prose a:hover {
+	text-decoration-color: var(--color-text);
+}
+
+/* Headings: balanced wrapping, no orphaned words. */
+.prose :is(h1, h2, h3, h4) {
+	text-wrap: balance;
+	font-weight: 600;
+}

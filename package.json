@@ -1,9 +1,17 @@
 {
-  "name": "nebulous-nadir",
+  "name": "shivapuri-baba-website",
   "type": "module",
   "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
   "engines": {
     "node": ">=22.12.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   },
   "scripts": {
     "dev": "astro dev",
@@ -12,6 +20,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.4.7"
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource-variable/eb-garamond": "^5.2.7",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^6.4.7",
+    "rehype-external-links": "^3.0.0",
+    "sharp": "^0.35.1",
+    "tailwindcss": "^4.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.20"
   }
 }

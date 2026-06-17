@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Content as About } from '../content/about.md';
+---
+
+<Layout
+	title="About this website — Shivapuri Baba"
+	description="About this non-profit, open-source website on Shivapuri Baba: its principles — non-profit, academic rigour, the best possible reading experience, and open source — and its licence."
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<About />
+			</article>
+		</div>
+	</div>
+</Layout>
