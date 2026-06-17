@@ -58,12 +58,15 @@ Type is the design. Most of the craft lives here.
 - **Self-hosted fonts** only (no third-party font CDNs — privacy per pillar 1,
   reliability per pillar 3). Provide robust system-font fallbacks so text renders
   instantly even before any webfont loads.
-- **Decided & implemented:** body / long-form text is set in **EB Garamond**
-  (a warm, book-like old-style serif), self-hosted via
-  `@fontsource-variable/eb-garamond`. UI — navigation, labels, captions, metadata
-  — uses the **platform system sans stack** (`font-sans`): zero bytes, instant,
-  reliable. The serif carries the message; the sans stays quiet in the chrome.
-  Base font size is bumped to 18px so the delicate serif reads comfortably.
+- **Decided & implemented:** the whole site is set in a **single typeface —
+  EB Garamond** (a warm, book-like old-style serif), self-hosted via
+  `@fontsource-variable/eb-garamond`. Chrome (navigation, captions, metadata) is
+  the *same* serif as the body, only smaller and quieter — so the site reads like
+  one continuous book rather than a serif document wrapped in sans-serif UI. A
+  robust system-serif fallback (`Georgia`, `Times New Roman`) renders instantly
+  before the webfont loads. Base font size is bumped to 18px so the delicate
+  serif reads comfortably, and body copy is hyphenated for an even right edge on
+  narrow screens.
 
 ## Layout & space
 
