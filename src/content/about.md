@@ -1,6 +1,6 @@
 # About this website
 
-This is a non-profit, open-source website dedicated to the life, teachings, and legacy of the mystic Shivapuri Baba (1826–1963).
+This is a non-profit, open-source website dedicated to the life, teachings, and legacy of Shivapuri Baba (1826–1963).
 
 It is not about its authors or contributors. It exists only to carry Shivapuri Baba's message — faithfully, freely, and to anyone who seeks it. Those who build it are stewards, not subjects.
 

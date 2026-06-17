@@ -1,7 +1,7 @@
 # Shivapuri Baba
 
-An open, non-profit website dedicated to the life, teachings, and legacy of the
-mystic **Shivapuri Baba**.
+An open, non-profit website dedicated to the life, teachings, and legacy of
+**Shivapuri Baba**.
 
 This project is not about its authors or contributors. It exists solely to
 carry **Shivapuri Baba's message** faithfully, freely, and to anyone who seeks
