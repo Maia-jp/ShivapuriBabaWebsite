@@ -71,16 +71,20 @@ const isActive = (href: string) =>
 	</head>
 	<body class="min-h-screen">
 		<div class="mx-auto flex min-h-screen max-w-5xl flex-col px-6">
-			<header class="font-sans flex items-center justify-between py-6 text-sm">
-				<a href="/" class="font-medium tracking-wide">Shivapuri Baba</a>
-				<nav class="flex gap-6 text-[color:var(--color-muted)]">
+			<header
+				class="flex flex-col items-center gap-y-3 py-6 text-center sm:flex-row sm:justify-between sm:text-left"
+			>
+				<a href="/" class="text-lg tracking-wide">Shivapuri Baba</a>
+				<nav
+					class="flex w-full flex-wrap justify-center gap-x-5 gap-y-1 text-[color:var(--color-muted)] sm:w-auto"
+				>
 					{
 						nav.map((item) => (
 							<a
 								href={item.href}
 								aria-current={isActive(item.href) ? 'page' : undefined}
 								class:list={[
-									'hover:text-[color:var(--color-text)]',
+									'whitespace-nowrap underline-offset-2 hover:text-[color:var(--color-text)] hover:underline',
 									isActive(item.href) && 'text-[color:var(--color-text)]',
 								]}
 							>
@@ -96,7 +100,7 @@ const isActive = (href: string) =>
 			</main>
 
 			<footer
-				class="font-sans mt-20 border-t border-[color:var(--color-border)] py-8 text-sm text-[color:var(--color-muted)]"
+				class="mt-20 border-t border-[color:var(--color-border)] py-8 text-sm text-[color:var(--color-muted)]"
 			>
 				<p>Shivapuri Baba · 1826–1963</p>
 				<p class="mt-1">

@@ -17,7 +17,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:reader": "astro build && node scripts/check-reader.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -29,6 +30,8 @@
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.20"
+    "@mozilla/readability": "^0.6.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "jsdom": "^29.1.1"
   }
 }
