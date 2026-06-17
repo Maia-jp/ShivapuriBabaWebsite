@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as RightLiving } from '../../content/teachings/right-living.md';
+import dhrubasthaliPhoto from '../../assets/shivapuri-baba-dhrubasthali.jpg';
+
+const site = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, site);
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Teachings',
+			item: new URL('/teachings', site).href,
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Right Living (Swadharma)',
+			item: canonicalURL.href,
+		},
+	],
+};
+
+const articleSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: 'Right Living (Swadharma): The Teaching of Sri Shivapuri Baba',
+	about: { '@type': 'Person', name: 'Shivapuri Baba' },
+	isPartOf: { '@type': 'CollectionPage', name: 'Teachings', url: new URL('/teachings', site).href },
+	url: canonicalURL.href,
+};
+---
+
+<Layout
+	title="Right Living (Swadharma) — The Teaching of Shivapuri Baba"
+	description="Shivapuri Baba's central teaching, the Right Life or Swadharma: three disciplines — physical, moral, and spiritual — drawn only from first-hand sources, with full citations."
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(breadcrumbSchema)}
+		is:inline
+	/>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(articleSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<nav
+				class="font-sans mb-8 text-xs text-[color:var(--color-muted)]"
+				aria-label="Breadcrumb"
+			>
+				<a href="/teachings" class="hover:text-[color:var(--color-text)]">Teachings</a>
+				<span aria-hidden="true"> › </span>
+				<span aria-current="page">Right Living</span>
+			</nav>
+
+			<article class="prose">
+				<figure>
+					<Picture
+						src={dhrubasthaliPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1209]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="Shivapuri Baba seated at his hermitage at Dhrubasthali, behind the Pashupatinath temple, Kathmandu"
+						loading="eager"
+					/>
+					<figcaption>
+						Shivapuri Baba at his hermitage at Dhrubasthali, behind the
+						Pashupatinath temple, Kathmandu. This photograph circulates widely
+						online; its original source could not be traced.
+					</figcaption>
+				</figure>
+				<RightLiving />
+			</article>
+
+			<nav
+				class="font-sans mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="Continue reading"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">Continue</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/biography" class="underline-offset-2 hover:underline">Biography</a
+						><span class="text-[color:var(--color-muted)]">
+							— the life of the man who taught it, from first-hand sources</span
+						>
+					</li>
+					<li>
+						<a href="/books" class="underline-offset-2 hover:underline">Books &amp; Media</a
+						><span class="text-[color:var(--color-muted)]">
+							— where to find the sources, in print or free to borrow</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>
