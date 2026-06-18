@@ -6,7 +6,7 @@
 # `_headers` (in public/) is applied automatically; `not_found_handling`
 # serves our custom 404.html for unknown routes.
 
-name = "shivapuri-baba-website"
+name = "shivapuri-baba"
 compatibility_date = "2026-06-17"
 
 [assets]
