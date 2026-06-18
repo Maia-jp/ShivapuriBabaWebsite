@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Content as Books } from '../../content/pt-br/livros.md';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+
+// Structured data: a reading list of the first-hand books, for richer search results.
+const bennett = { '@type': 'Person', name: 'J. G. Bennett' };
+const collectionSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'CollectionPage',
+	name: 'Shivapuri Baba — Livros, Mídia e Referências',
+	about: { '@type': 'Person', name: 'Shivapuri Baba' },
+	inLanguage: 'pt-BR',
+	url: canonicalURL.href,
+	hasPart: [
+		{
+			'@type': 'Book',
+			name: 'Long Pilgrimage: The Life and Teaching of the Shivapuri Baba',
+			author: [bennett, { '@type': 'Person', name: 'Thakur Lal Manandhar' }],
+			datePublished: '1965',
+			isbn: '978-1530624317',
+			about: { '@type': 'Person', name: 'Shivapuri Baba' },
+		},
+		{
+			'@type': 'Book',
+			name: 'Witness: The Story of a Search',
+			author: bennett,
+			datePublished: '1962',
+		},
+		{
+			'@type': 'Book',
+			name: 'The Shivapuri Baba and His Message: Four Lectures on a Great Indian Sage',
+			author: bennett,
+			isbn: '978-1533489319',
+			about: { '@type': 'Person', name: 'Shivapuri Baba' },
+		},
+		{
+			'@type': 'Book',
+			name: 'Strange Places, Simple Truths',
+			author: { '@type': 'Person', name: 'Ainslie Meares' },
+			datePublished: '1969',
+		},
+		{
+			'@type': 'Book',
+			name: 'Right Life: Teachings of the Shivapuri Baba',
+			author: { '@type': 'Person', name: 'Renu Lal Singh' },
+			datePublished: '1975',
+			isbn: '0-900306-82-3',
+			about: { '@type': 'Person', name: 'Shivapuri Baba' },
+		},
+		{
+			'@type': 'Book',
+			name: 'Right Living: The Teaching of Sri Shivapuri Baba',
+			author: { '@type': 'Person', name: 'Yogendra Bhakta Shrestha Malla' },
+			about: { '@type': 'Person', name: 'Shivapuri Baba' },
+		},
+		{
+			'@type': 'Book',
+			name: 'Swadharma',
+			author: { '@type': 'Person', name: 'Bishnu Prasad Timilsina' },
+			inLanguage: 'ne',
+			about: { '@type': 'Person', name: 'Shivapuri Baba' },
+		},
+	],
+};
+---
+
+<Layout
+	title="Shivapuri Baba — Livros, Mídia e Referências"
+	description="Onde encontrar livros, áudio e referências sobre Shivapuri Baba: relatos de primeira mão (Bennett, Meares), compilações de discípulos, as gravações de 1962 e leitura complementar — com links para vendedores e empréstimo gratuito."
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(collectionSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<Books />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="Continuar a leitura"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">Leia a seguir</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/pt-br/biografia" class="underline-offset-2 hover:underline">Biografia</a
+						><span class="text-[color:var(--color-muted)]">
+							— a vida, extraída apenas de fontes de primeira mão</span
+						>
+					</li>
+					<li>
+						<a href="/pt-br/ensinamentos/vida-correta" class="underline-offset-2 hover:underline"
+							>Vida Correta (Swadharma)</a
+						><span class="text-[color:var(--color-muted)]"> — o ensinamento exposto na íntegra</span>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>

@@ -21,15 +21,38 @@ if (!existsSync(DIST)) {
 }
 
 // Long-form "chapter" pages that MUST read like an ebook in Reader View.
+// Latin-script locales (en, pt-br) share one bar; non-Latin scripts (Arabic,
+// Devanagari) are held to a slightly lower char floor — the same prose is more
+// compact in those scripts, so the floor still proves substantial extraction.
 const articles = [
+	// English (default)
 	{ file: 'biography/index.html', minChars: 12000, image: true },
 	{ file: 'teachings/right-living/index.html', minChars: 9000, image: true },
 	{ file: 'books/index.html', minChars: 4000, image: false },
 	{ file: 'about/index.html', minChars: 1500, image: false },
+	// Brazilian Portuguese
+	{ file: 'pt-br/biografia/index.html', minChars: 12000, image: true },
+	{ file: 'pt-br/ensinamentos/vida-correta/index.html', minChars: 9000, image: true },
+	{ file: 'pt-br/livros/index.html', minChars: 4000, image: false },
+	{ file: 'pt-br/sobre/index.html', minChars: 1500, image: false },
+	// Arabic / Nepali / Hindi (non-Latin scripts)
+	...['ar', 'ne', 'hi'].flatMap((l) => [
+		{ file: `${l}/biography/index.html`, minChars: 8000, image: true },
+		{ file: `${l}/teachings/right-living/index.html`, minChars: 6000, image: true },
+		{ file: `${l}/books/index.html`, minChars: 3000, image: false },
+		{ file: `${l}/about/index.html`, minChars: 1000, image: false },
+	]),
 ];
 
 // Utility/navigation pages that should NOT masquerade as articles.
-const nonArticles = ['teachings/index.html', '404.html'];
+const nonArticles = [
+	'teachings/index.html',
+	'pt-br/ensinamentos/index.html',
+	'ar/teachings/index.html',
+	'ne/teachings/index.html',
+	'hi/teachings/index.html',
+	'404.html',
+];
 
 let failures = 0;
 const fail = (msg) => {
@@ -54,7 +77,8 @@ for (const { file, minChars, image } of articles) {
 	const frag = new JSDOM(`<body>${article.content}</body>`).window.document;
 	if (article.length < minChars)
 		fail(`extracted ${article.length} chars, expected ≥ ${minChars}`);
-	if (!/[a-z]/i.test(article.title)) fail('missing title');
+	// Script-agnostic: any Unicode letter (Latin, Arabic, Devanagari, …).
+	if (!article.title || !/\p{L}/u.test(article.title)) fail('missing title');
 	if (frag.querySelectorAll('h2,h3').length < 1) fail('no headings survived extraction');
 	if (image && frag.querySelectorAll('img').length < 1) fail('lead image dropped in Reader View');
 
