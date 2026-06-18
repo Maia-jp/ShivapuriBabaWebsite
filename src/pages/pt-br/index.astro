@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import portrait from '../../assets/shivapuri-baba-portrait.jpg';
+---
+
+<Layout
+	title="Shivapuri Baba — Vida, Ensinamento e as Três Disciplinas"
+	description="Shivapuri Baba (1826–1963), o sábio do Sul da Índia que alcançou a Realização de Deus e ensinou a Vida Correta — levar o Corpo, o Intelecto, a Mente e a Alma à perfeição por meio de três disciplinas."
+>
+	<div class="py-10 md:py-16">
+		<section class="md:grid md:grid-cols-[minmax(0,19rem)_1fr] md:gap-14">
+				<!-- Portrait -->
+				<figure class="mb-10 md:mb-0 md:sticky md:top-12 md:self-start">
+					<div
+						class="aspect-[3/4] w-full overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-border)]"
+					>
+						<Picture
+							src={portrait}
+							formats={['avif', 'webp']}
+							widths={[304, 480]}
+							sizes="(min-width: 768px) 304px, 100vw"
+							alt="Retrato de Shivapuri Baba"
+							loading="eager"
+							class="h-full w-full object-cover"
+						/>
+					</div>
+					<figcaption class="mt-3 text-xs text-[color:var(--color-muted)]">
+						Shivapuri Baba (1826–1963). Este retrato circula on-line e não foi
+						possível atribuí-lo a uma fonte confiável.
+					</figcaption>
+				</figure>
+
+				<!-- Biography -->
+				<article class="prose">
+					<h1>Shivapuri Baba</h1>
+					<p>
+						Shivapuri Baba nasceu em 1826 numa família brâmane abastada e culta
+						do Sul da Índia, e adotou o nome de renunciante Govindananda Bharati
+						ao tornar-se sannyasin.
+					</p>
+					<p>
+						Seu avô, um respeitado astrólogo, tornou-se seu guru. Renunciando à
+						herança — que transferiu à irmã —, seguiu o avô rumo às florestas na
+						nascente do rio Narmada. Após a morte do avô, recolheu-se ali a
+						profunda solidão, e assim teve início sua busca por Deus.
+					</p>
+					<p>
+						Após quase vinte e cinco anos de severa penitência, alcançou a
+						Realização de Deus — o destino final que, segundo ele, todo ser
+						humano deve alcançar.
+					</p>
+					<p>
+						Então, como desejara o avô, partiu numa grande peregrinação ao redor
+						do mundo — boa parte dela a pé, ao longo de cerca de quarenta anos —
+						antes de fixar-se por fim nas colinas perto de Catmandu, onde ensinou
+						a Vida Correta a buscadores de toda espécie até sua morte, em 1963.
+					</p>
+					<p>Qual é a dádiva de sua Vida Correta?</p>
+					<figure>
+						<blockquote>
+							<p>
+								É muito simples: levar o Corpo, o Intelecto, a Mente e a Alma à
+								perfeição.
+							</p>
+						</blockquote>
+						<figcaption>— <cite>Shivapuri Baba</cite></figcaption>
+					</figure>
+					<p>
+						<a href="/pt-br/biografia">Leia a biografia completa, com fontes →</a>
+					</p>
+				</article>
+			</section>
+
+			<!-- The Three Disciplines -->
+			<section class="mt-20 border-t border-[color:var(--color-border)] pt-16 md:mt-28">
+				<div class="mx-auto max-w-2xl">
+					<div class="prose">
+						<h2>As Três Disciplinas</h2>
+						<p>
+							Shivapuri Baba dizia que todo ser vivo deve alcançar esta meta para
+							tornar-se 100% livre — porque o homem, sendo a coroa de todos os
+							seres vivos, é o único capaz de consegui-lo. Como se consegue?
+							Praticando as três disciplinas: física, mental e espiritual.
+						</p>
+
+						<h3>Disciplina física</h3>
+						<p>
+							A disciplina física leva o corpo e o intelecto do buscador à
+							perfeição ao tornar o corpo saudável. Ao mesmo tempo,
+							restringindo-se ao seu <em>swadharma</em> — seu dever escolhido — e
+							jamais se desviando para atividades inúteis e nocivas, ele torna
+							sua vida bem-sucedida e próspera. Torna-se feliz e vive como um
+							rei; mas não pode alcançar o Supremo, Deus.
+						</p>
+
+						<h3>Disciplina mental</h3>
+						<p>
+							A disciplina mental doma a mente, que, em consequência, passa a
+							deter poder de comando e controle sobre os sentidos e seus objetos.
+							Ele se liberta de seus gostos e desgostos; não se desvia para a
+							especulação nem para desejos e ações ilícitos. Desse modo, torna-se
+							um iogue feliz e realizado, pleno de poderes ocultos — mas ainda
+							assim fica aquém de Deus. Com sua morte, todas as suas realizações
+							desaparecem.
+						</p>
+
+						<h3>Disciplina espiritual</h3>
+						<p>
+							A última disciplina permite-lhe adquirir qualidades divinas. Sua
+							alma, despojada da identificação com o corpo, o intelecto e a mente
+							— o falso <em>“eu”</em>, a jaula em que estivera aprisionada até
+							então —, vem a conhecer seu verdadeiro <em>“eu”</em>: o
+							<em>Purusha</em>. Deus, o Pai, concede Sua graça, que o torna apto a
+							voar para o Seu reino — seu lugar de nascimento, seu direito de
+							nascença, sua meta. Ele se torna <em>Purushottama</em>, o Maior.
+						</p>
+						<p>
+							Torna-se onipresente, onisciente, onipotente, eternamente
+							bem-aventurado e imortal.
+						</p>
+						<p>
+							Shivapuri Baba implora a todo homem que alcance isto, recomendando a
+							prática das três disciplinas simultaneamente, não isoladamente. No
+							início, predominam as duas primeiras; ao final, a terceira torna-se
+							predominante.
+						</p>
+						<p>
+							<a href="/pt-br/ensinamentos/vida-correta">Leia o ensinamento completo, com fontes →</a>
+						</p>
+					</div>
+				</div>
+			</section>
+	</div>
+</Layout>

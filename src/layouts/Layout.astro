@@ -1,6 +1,20 @@
 ---
 import '@fontsource-variable/eb-garamond';
 import '../styles/global.css';
+import {
+	ui,
+	routes,
+	getLocale,
+	normalizePath,
+	routeKeyOf,
+	htmlLang,
+	dir,
+	ogLocale,
+	hreflang,
+	localeShortLabel,
+	localeName,
+	LOCALES,
+} from '../i18n/ui';
 
 interface Props {
 	title?: string;
@@ -12,28 +26,51 @@ const {
 	description = 'An open, non-profit resource on the life, teachings, and legacy of Shivapuri Baba (1826–1963).',
 } = Astro.props;
 
+const site = Astro.site ?? Astro.url;
+
 // Canonical / Open Graph URL, resolved against the configured site.
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const canonicalURL = new URL(Astro.url.pathname, site);
 
 // Absolute URL for the social share image (must be absolute for Open Graph).
-const ogImageURL = new URL('/og.jpg', Astro.site ?? Astro.url).href;
+const ogImageURL = new URL('/og.jpg', site).href;
 
-// Current path (trailing slash removed) for marking the active nav item.
-const current = Astro.url.pathname.replace(/(.)\/$/, '$1');
+// Current path (trailing slash removed) for matching routes and the active nav item.
+const current = normalizePath(Astro.url.pathname);
 
-const nav = [
-	{ href: '/', label: 'Home' },
-	{ href: '/biography', label: 'Biography' },
-	{ href: '/teachings', label: 'Teachings' },
-	{ href: '/books', label: 'Books & Media' },
-];
+// Which language this page is, and the strings/labels that follow from it.
+const locale = getLocale(current);
+const t = ui[locale];
+const homePath = routes.home[locale];
+
+// Resolve the nav items for this locale to their localized URLs.
+const navItems = t.nav.map((item) => ({ href: routes[item.key][locale], label: item.label }));
 
 // A nav item is active for its own page and for any page beneath it.
 const isActive = (href: string) =>
-	href === '/' ? current === '/' : current === href || current.startsWith(href + '/');
+	href === homePath ? current === homePath : current === href || current.startsWith(href + '/');
+
+// The equivalent page in each language, for the switcher and hreflang. Pages
+// outside the route map (e.g. 404) have no pair, so fall back to each home.
+const routeKey = routeKeyOf(current);
+const localeHref = (loc: (typeof LOCALES)[number]) =>
+	routeKey ? routes[routeKey][loc] : routes.home[loc];
+
+// hreflang alternates (only for paired pages), with x-default → English.
+const alternates = routeKey
+	? LOCALES.map((loc) => ({
+			hreflang: hreflang[loc],
+			href: new URL(routes[routeKey][loc], site).href,
+		}))
+	: [];
+const xDefaultHref = routeKey ? new URL(routes[routeKey].en, site).href : null;
+
+const ogImageAlt =
+	locale === 'pt-br'
+		? 'Retrato de Shivapuri Baba (1826–1963)'
+		: 'Portrait of Shivapuri Baba (1826–1963)';
 ---
 
-<html lang="en">
+<html lang={htmlLang[locale]} dir={dir[locale]}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -50,49 +87,87 @@ const isActive = (href: string) =>
 		<link rel="canonical" href={canonicalURL} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
+		<!-- Language alternates (hreflang) -->
+		{alternates.map((alt) => (
+			<link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+		))}
+		{xDefaultHref && <link rel="alternate" hreflang="x-default" href={xDefaultHref} />}
+
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Shivapuri Baba" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:locale" content="en" />
+		<meta property="og:locale" content={ogLocale[locale]} />
+		{LOCALES.filter((loc) => loc !== locale).map((loc) => (
+			<meta property="og:locale:alternate" content={ogLocale[loc]} />
+		))}
 		<meta property="og:image" content={ogImageURL} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Portrait of Shivapuri Baba (1826–1963)" />
+		<meta property="og:image:alt" content={ogImageAlt} />
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
-		<meta name="twitter:image:alt" content="Portrait of Shivapuri Baba (1826–1963)" />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
 	</head>
 	<body class="min-h-screen">
 		<div class="mx-auto flex min-h-screen max-w-5xl flex-col px-6">
 			<header
 				class="flex flex-col items-center gap-y-3 py-6 text-center sm:flex-row sm:justify-between sm:text-left"
 			>
-				<a href="/" class="text-lg tracking-wide">Shivapuri Baba</a>
-				<nav
-					class="flex w-full flex-wrap justify-center gap-x-5 gap-y-1 text-[color:var(--color-muted)] sm:w-auto"
+				<a href={homePath} class="text-lg tracking-wide">Shivapuri Baba</a>
+				<div
+					class="flex w-full flex-col items-center gap-y-2 sm:w-auto sm:flex-row sm:gap-x-6"
 				>
-					{
-						nav.map((item) => (
-							<a
-								href={item.href}
-								aria-current={isActive(item.href) ? 'page' : undefined}
-								class:list={[
-									'whitespace-nowrap underline-offset-2 hover:text-[color:var(--color-text)] hover:underline',
-									isActive(item.href) && 'text-[color:var(--color-text)]',
-								]}
-							>
-								{item.label}
-							</a>
-						))
-					}
-				</nav>
+					<nav
+						class="flex flex-wrap justify-center gap-x-5 gap-y-1 text-[color:var(--color-muted)]"
+					>
+						{
+							navItems.map((item) => (
+								<a
+									href={item.href}
+									aria-current={isActive(item.href) ? 'page' : undefined}
+									class:list={[
+										'whitespace-nowrap underline-offset-2 hover:text-[color:var(--color-text)] hover:underline',
+										isActive(item.href) && 'text-[color:var(--color-text)]',
+									]}
+								>
+									{item.label}
+								</a>
+							))
+						}
+					</nav>
+					<div
+						class="flex items-center gap-x-2 text-sm text-[color:var(--color-muted)]"
+						aria-label={t.switcherLabel}
+					>
+						{
+							LOCALES.map((loc, i) => (
+								<>
+									{i > 0 && <span aria-hidden="true">·</span>}
+									<a
+										href={localeHref(loc)}
+										hreflang={hreflang[loc]}
+										lang={hreflang[loc]}
+										aria-current={loc === locale ? 'true' : undefined}
+										title={localeName[loc]}
+										class:list={[
+											'underline-offset-2 hover:text-[color:var(--color-text)] hover:underline',
+											loc === locale && 'font-medium text-[color:var(--color-text)]',
+										]}
+									>
+										{localeShortLabel[loc]}
+									</a>
+								</>
+							))
+						}
+					</div>
+				</div>
 			</header>
 
 			<main class="flex-1">
@@ -104,9 +179,12 @@ const isActive = (href: string) =>
 			>
 				<p>Shivapuri Baba · 1826–1963</p>
 				<p class="mt-1">
-					A non-profit, open-source project ·
-					<a href="/about" class="underline-offset-2 hover:text-[color:var(--color-text)] hover:underline">
-						About this site
+					{t.footerTagline} ·
+					<a
+						href={routes.about[locale]}
+						class="underline-offset-2 hover:text-[color:var(--color-text)] hover:underline"
+					>
+						{t.footerAbout}
 					</a>
 				</p>
 			</footer>

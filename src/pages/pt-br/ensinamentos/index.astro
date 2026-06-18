@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// Add future teaching sub-pages here and they appear in the list below.
+const teachings = [
+	{
+		href: '/pt-br/ensinamentos/vida-correta',
+		title: 'Vida Correta (Swadharma)',
+		summary:
+			'O ensinamento central do Baba: três disciplinas — física, moral e espiritual — que juntas formam a Vida Correta, extraídas apenas de fontes de primeira mão.',
+	},
+];
+---
+
+<Layout
+	title="Ensinamentos de Shivapuri Baba"
+	description="Os ensinamentos de Shivapuri Baba — a Vida Correta, ou Swadharma — apresentados a partir de fontes de primeira mão, com citações completas."
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>Ensinamentos</h1>
+				<p>
+					Shivapuri Baba ensinou uma única disciplina prática que chamava de
+					<strong>Vida Correta</strong>, ou <em>Swadharma</em>. As páginas aqui a
+					apresentam a partir dos registros de quem a aprendeu diretamente com
+					ele, com citação integral das fontes.
+				</p>
+			</article>
+
+			<ul class="mt-10 space-y-8 border-t border-[color:var(--color-border)] pt-10">
+				{
+					teachings.map((t) => (
+						<li>
+							<a
+								href={t.href}
+								class="font-serif text-xl underline-offset-2 hover:underline"
+							>
+								{t.title}
+							</a>
+							<p class="mt-1 text-[color:var(--color-muted)]">{t.summary}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>

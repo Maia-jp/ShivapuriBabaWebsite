@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Content as About } from '../../content/hi/about.md';
+---
+
+<Layout
+	title="इस साइट के बारे में — शिवपुरी बाबा"
+	description="शिवपुरी बाबा को समर्पित इस ग़ैर-लाभकारी, ओपन-सोर्स साइट के बारे में: इसके सिद्धांत — सदैव ग़ैर-लाभकारी, अकादमिक कठोरता, सर्वोत्तम संभव पठन अनुभव और ओपन सोर्स — और इसकी अनुज्ञप्ति।"
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<About />
+			</article>
+		</div>
+	</div>
+</Layout>

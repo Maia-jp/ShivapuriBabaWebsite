@@ -48,6 +48,20 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Non-Latin scripts: EB Garamond carries no Arabic or Devanagari glyphs, so
+   keep it first (for Latin book titles and names) and fall back to a quiet,
+   high-quality system font for each script — zero downloads, per the tech
+   stack's no-CDN ethos. */
+:lang(ar) {
+	font-family: "EB Garamond Variable", "Noto Naskh Arabic", "Geeza Pro", "Times New Roman", serif;
+}
+
+:lang(hi),
+:lang(ne) {
+	font-family: "EB Garamond Variable", "Noto Serif Devanagari", "Noto Sans Devanagari",
+		"Kohinoor Devanagari", "Devanagari Sangam MN", "Mangal", serif;
+}
+
 ::selection {
 	background-color: var(--color-selection);
 }

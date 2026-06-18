@@ -1,0 +1,47 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// Add future teaching sub-pages here and they appear in the list below.
+const teachings = [
+	{
+		href: '/ar/teachings/right-living',
+		title: 'الحياة القويمة (Swadharma)',
+		summary:
+			'تعليم البابا المركزي: ثلاث رياضات — بدنية وأخلاقية وروحية — تشكّل معاً الحياة القويمة، مستمدّة فقط من مصادر مباشرة.',
+	},
+];
+---
+
+<Layout
+	title="تعاليم شيفابوري بابا"
+	description="تعاليم شيفابوري بابا — الحياة القويمة، أو سوادهارما — معروضةً من مصادر مباشرة، مع توثيقٍ كامل."
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>التعاليم</h1>
+				<p>
+					علّم شيفابوري بابا رياضةً عملية واحدة سمّاها
+					<strong>الحياة القويمة</strong>، أو <em>سوادهارما</em>. والصفحات هنا
+					تعرضها من سجلّات من تعلّموها منه مباشرةً، مع توثيقٍ كامل للمصادر.
+				</p>
+			</article>
+
+			<ul class="mt-10 space-y-8 border-t border-[color:var(--color-border)] pt-10">
+				{
+					teachings.map((t) => (
+						<li>
+							<a
+								href={t.href}
+								class="font-serif text-xl underline-offset-2 hover:underline"
+							>
+								{t.title}
+							</a>
+							<p class="mt-1 text-[color:var(--color-muted)]">{t.summary}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>

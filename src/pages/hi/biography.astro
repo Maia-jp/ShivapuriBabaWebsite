@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as Biography } from '../../content/hi/biography.md';
+import bennettPhoto from '../../assets/shivapuri-baba-bennett.jpg';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+
+// Structured data helps search engines understand the page is about a person.
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Shivapuri Baba',
+	alternateName: ['Sri Govindananda Bharati', 'Govindananda Bharati'],
+	birthDate: '1826',
+	deathDate: '1963-01-28',
+	birthPlace: 'South India',
+	description:
+		'भारतीय ऋषि और सन्न्यासी जिन्होंने नर्मदा के वन में दीर्घ तपश्चर्या के बाद ईश्वर-साक्षात्कार प्राप्त किया और सम्यक् जीवन (स्वधर्म) की शिक्षा दी। उन्होंने अपने अंतिम दशक नेपाल में काठमांडू के निकट बिताए।',
+	url: canonicalURL.href,
+	sameAs: ['https://en.wikipedia.org/wiki/Shivapuri_Baba'],
+};
+---
+
+<Layout
+	title="शिवपुरी बाबा की जीवनी (1826–1963)"
+	description="शिवपुरी बाबा (श्री गोविंदानंद भारती, 1826–1963) का जीवन, केवल प्रत्यक्ष प्रत्यक्षदर्शी स्रोतों से लिया गया — मुख्यतः J. G. Bennett और Dr. Ainslie Meares —, पूर्ण उद्धरणों सहित।"
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(personSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<figure>
+					<Picture
+						src={bennettPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1344]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="शिवपुरी बाबा, काठमांडू में J. G. Bennett की भेंट के दौरान लिया गया चित्र, 1961–62"
+						loading="eager"
+					/>
+					<figcaption>
+						शिवपुरी बाबा। चित्र सौजन्य
+						<a
+							href="https://www.jgbennett.org/tag/shivapuri-baba/"
+							target="_blank"
+							rel="noopener noreferrer">J. G. Bennett Foundation</a
+						>।
+					</figcaption>
+				</figure>
+				<Biography />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="पठन जारी रखें"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">आगे पढ़ें</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/hi/teachings/right-living" class="underline-offset-2 hover:underline"
+							>सम्यक् जीवन (स्वधर्म)</a
+						><span class="text-[color:var(--color-muted)]"> — शिक्षा पूर्ण रूप में प्रतिपादित</span>
+					</li>
+					<li>
+						<a href="/hi/books" class="underline-offset-2 hover:underline">पुस्तकें और मीडिया</a
+						><span class="text-[color:var(--color-muted)]">
+							— स्रोतों को कहाँ पाएँ, मुद्रित या निःशुल्क उधार के लिए</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>
