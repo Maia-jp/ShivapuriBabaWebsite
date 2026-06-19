@@ -1,14 +1,14 @@
 # Localization (l10n)
 
 This document records how the site is translated, the conventions that keep the
-translation faithful and consistent, and the **open questions** awaiting review.
+translation faithful and consistent, and the **decisions** taken along the way.
 It exists for the same reason the rest of the project is documented in the open:
 so the localization can be audited and improved (Pillars 2 and 4).
 
 > **Status:** Five locales live — English (default), Brazilian Portuguese
-> (`pt-BR`), Arabic (`ar`, RTL), Nepali (`ne`), Hindi (`hi`). PT-BR awaits review
-> (questions in §5); ar/ne/hi were produced for a fluent reader and need no
-> review cycle.
+> (`pt-BR`), Arabic (`ar`, RTL), Nepali (`ne`), Hindi (`hi`). PT-BR's flagged
+> review questions are resolved (§5); ar/ne/hi were produced for a fluent reader
+> and need no review cycle.
 
 ---
 
@@ -169,42 +169,30 @@ Bagmati, Kirateshwar, Benares. Monarchs follow PT convention: **Rainha Vitória*
 
 ---
 
-## 5. Open questions for review
+## 5. Decisions (resolved)
 
-Genuine judgment calls. Each has a defensible default already applied; flag any
-you'd like changed and I'll propagate it across all pages.
+These were flagged as judgment calls and have now been **confirmed by the
+maintainer**. The defaults stand; no further changes pending.
 
-**Q1 — "Devotion (Vairāgya)".** The English calls the spiritual discipline
-"Devotion". Literally, *vairāgya* is closer to *dispassion / detachment*
-(*desapego*); *devotion* is usually *bhakti*. I kept **"Devoção"** to stay
-faithful to the English the site actually publishes. **Default: Devoção.**
-Alternative: render as "Desapego (Vairāgya)" and add a translator's note. Your call.
+**Q1 — "Devotion (Vairāgya)" → keep "Devoção".** Chosen for **fidelity to the
+English the site publishes** ("Devotion") over the literal Sanskrit sense
+(*desapego* / dispassion). No change.
 
-**Q2 — "Discrimination (Viveka)" → "Discernimento".** In philosophical/Vedanta
-usage *viveka* is discernment of the real from the unreal, so I used
-**"Discernimento"** rather than the false friend *"Discriminação"* (which in
-PT-BR primarily connotes prejudice). I believe this is unambiguously correct, but
-flagging since it departs from the English cognate.
+**Q2 — "Discrimination (Viveka)" → keep "Discernimento"** (the Vedanta sense:
+discernment of real from unreal), not the false friend *"Discriminação"*.
 
-**Q3 — Sanskrit spelling: adapt or preserve?** I adapted a few adjectives to
-Portuguese (*sáttvico/tâmasico*, *iogue*) for natural reading, while preserving
-IAST nouns exactly (*dhāraṇā, śānti, santoṣa, daivī sampad*). I also **standardized
-*Vairāgya* with its macron across the PT site** — the English source spells it
-"Vairagya" in the biography but "Vairāgya" in the teaching; the PT pages use the
-IAST form consistently, matching the other diacritic terms. If you prefer maximum
-preservation (keep *sāttvic/tāmasic/yogi* verbatim, italic), say so.
+**Q3 — Sanskrit spelling → keep as shipped.** Adjectives adapted for natural
+reading (*sáttvico/tâmasico*, *iogue*); IAST nouns preserved exactly (*dhāraṇā,
+śānti, santoṣa, daivī sampad*); *Vairāgya* standardized with its macron site-wide.
 
-**Q4 — Place-name exonyms.** I used Portuguese exonyms in prose (e.g.
-**Catmandu**, **Pérsia**, **Tibete**, **Rainha Vitória**). Some readers prefer the
-original "Kathmandu". Default: exonyms. Easy to switch to originals if preferred.
+**Q4 — Place names → keep Portuguese exonyms** (Catmandu, Pérsia, Tibete,
+Rainha Vitória) in running prose.
 
-**Q5 — Scope of the PT-BR build.** I localized all four long-form pages
-(biography, teaching, books, about), the home page, the teachings index, the 404,
-all navigation/UI, meta titles/descriptions, image alt text, and structured data.
-The `LICENSE`/`LICENSE-CONTENT.md`/`PRINCIPLES.md`/`DESIGN.md`/`TECHSTACK.md`/
-`README.md` repo docs were **left in English** (developer-facing, not site
-content). Confirm that's the intended boundary.
+**Q5 — Scope → confirmed.** Site *content* is fully localized in every locale
+(all long-form pages, home, teachings index, 404, nav/UI, meta, alt text,
+structured data). Developer-facing repo docs (`LICENSE`, `LICENSE-CONTENT.md`,
+`PRINCIPLES.md`, `DESIGN.md`, `TECHSTACK.md`, `README.md`) stay in English by
+design.
 
-**Q6 — Replace vs. bilingual (architecture).** Default is bilingual (see §1). If
-the intent was a Portuguese-only site, I'll collapse `/pt-br/` to the root and
-remove the English routes.
+**Q6 — Architecture → multilingual (not a replacement).** English stays the
+default at the root; PT-BR, Arabic, Nepali, and Hindi live under their prefixes.
