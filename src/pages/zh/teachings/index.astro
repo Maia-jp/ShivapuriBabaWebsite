@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// Add future teaching sub-pages here and they appear in the list below.
+const teachings = [
+	{
+		href: '/zh/teachings/right-living',
+		title: '正命之道（Swadharma）',
+		summary:
+			'巴巴的核心教导：三种修持——身体的、道德的与灵性的——它们合在一起构成正命之道，仅取材于第一手来源。',
+	},
+];
+---
+
+<Layout
+	title="湿婆普里巴巴的教导"
+	description="湿婆普里巴巴的教导——正命之道，或 Swadharma——取材于第一手来源，并附有完整的引注。"
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>教导</h1>
+				<p>
+					湿婆普里巴巴教导一门单一的实修，他称之为
+					<strong>正命之道</strong>，或 <em>Swadharma</em>。这里的页面
+					根据那些直接从他那里学到它的人的记录来呈现它，并附有来源的完整
+					引注。
+				</p>
+			</article>
+
+			<ul class="mt-10 space-y-8 border-t border-[color:var(--color-border)] pt-10">
+				{
+					teachings.map((t) => (
+						<li>
+							<a
+								href={t.href}
+								class="font-serif text-xl underline-offset-2 hover:underline"
+							>
+								{t.title}
+							</a>
+							<p class="mt-1 text-[color:var(--color-muted)]">{t.summary}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>

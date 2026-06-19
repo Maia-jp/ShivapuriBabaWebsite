@@ -22,11 +22,13 @@ The design has one job: to get out of the way of reading. The site is built to b
 
 ### 4. Open source
 
-The project belongs to the community. Its code — and, where rights allow, its content — is public, developed in the open, and free for anyone to read, audit, improve, or self-host.
+The project belongs to the community. Its code — and, where rights allow, its content — is public, developed in the open, and free for anyone to read, audit, improve, or self-host. The source code lives on [GitHub](https://github.com/Maia-jp/ShivapuriBabaWebsite).
 
 ## Corrections and contributions
 
 Because this site aims at a scholarly standard, it will sometimes be wrong, incomplete, or out of date. If you find an error, an unsupported claim, or a better source, we genuinely want to know — corrections and well-sourced contributions are welcome.
+
+You can reach us at [contact@shivapuri-baba.com](mailto:contact@shivapuri-baba.com).
 
 ## Licence
 

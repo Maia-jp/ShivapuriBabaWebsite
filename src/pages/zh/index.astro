@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import portrait from '../../assets/shivapuri-baba-portrait.jpg';
+---
+
+<Layout
+	title="湿婆普里巴巴 — 生平、教导与三种修持"
+	description="湿婆普里巴巴（Shivapuri Baba，1826–1963），一位证悟神的南印度圣者，他教导正命之道——通过三种修持，把身体、智识、心意与灵魂带向圆满。"
+>
+	<div class="py-10 md:py-16">
+		<section class="md:grid md:grid-cols-[minmax(0,19rem)_1fr] md:gap-14">
+				<!-- Portrait -->
+				<figure class="mb-10 md:mb-0 md:sticky md:top-12 md:self-start">
+					<div
+						class="aspect-[3/4] w-full overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-border)]"
+					>
+						<Picture
+							src={portrait}
+							formats={['avif', 'webp']}
+							widths={[304, 480]}
+							sizes="(min-width: 768px) 304px, 100vw"
+							alt="湿婆普里巴巴的肖像"
+							loading="eager"
+							class="h-full w-full object-cover"
+						/>
+					</div>
+					<figcaption class="mt-3 text-xs text-[color:var(--color-muted)]">
+						湿婆普里巴巴（1826–1963）。此图在网络上流传，未能将其追溯至任何
+						可信的来源。
+					</figcaption>
+				</figure>
+
+				<!-- Biography -->
+				<article class="prose">
+					<h1>湿婆普里巴巴</h1>
+					<p>
+						湿婆普里巴巴 1826 年生于南印度一个富裕、有学问的婆罗门家庭，在
+						受戒为遁世者（sannyasin）时取了出家之名 Govindananda Bharati。
+					</p>
+					<p>
+						他的祖父，一位受人尊敬的占星家，成了他的上师。舍弃了家产——将其
+						转让给妹妹——他追随祖父，前往讷尔默达河源头的森林。祖父去世后，
+						他便在那里退入深度的独居，他寻求神的历程由此开始。
+					</p>
+					<p>
+						历经约二十五年的严苛苦行，他证得了神的亲证——在他看来，那是每一个
+						人都应当抵达的终极归宿。
+					</p>
+					<p>
+						随后，正如祖父所愿，他踏上一段环游世界的伟大朝圣——其中大多是
+						徒步，历时约四十年——之后他终于在加德满都附近的山中落脚，并在那里
+						向各式各样的寻道者传授正命之道，直到 1963 年去世。
+					</p>
+					<p>他所说的正命之道的要旨是什么？</p>
+					<figure>
+						<blockquote>
+							<p>
+								这很简单：把身体、智识、心意与灵魂带向圆满。
+							</p>
+						</blockquote>
+						<figcaption>— <cite>Shivapuri Baba</cite></figcaption>
+					</figure>
+					<p>
+						<a href="/zh/biography">阅读完整的传记，附有来源 →</a>
+					</p>
+				</article>
+			</section>
+
+			<!-- The Three Disciplines -->
+			<section class="mt-20 border-t border-[color:var(--color-border)] pt-16 md:mt-28">
+				<div class="mx-auto max-w-2xl">
+					<div class="prose">
+						<h2>三种修持</h2>
+						<p>
+							湿婆普里巴巴常说，每一个生灵都应当抵达这个目标，方能获得百分之百的
+							解脱——因为人，作为一切生灵的冠冕，是唯一能够成就它的。如何成就它？
+							通过奉行三种修持：身体的、心意的与灵性的。
+						</p>
+
+						<h3>身体的修持</h3>
+						<p>
+							身体的修持使身体健全，从而把寻道者的身体与智识带向圆满。同时，
+							通过守在自己的 <em>swadharma</em>——自己所选定的本分——之内，并绝不
+							偏离去做无益与有害之事，他使自己的生活成功而丰盈。他变得快乐，活得
+							像个国王；但他无法抵达那至上者，无法抵达神。
+						</p>
+
+						<h3>心意的修持</h3>
+						<p>
+							心意的修持调御心意，心意因而获得对诸根及其对境发号施令、加以掌控的
+							力量。他从自己的贪爱与憎厌中解脱出来；他既不偏离去作空想，也不偏离
+							去生起不正当的欲望与行为。如此，他成为一位快乐而有成就的瑜伽士，
+							满怀种种隐秘的力量——可依然离神尚差一步。随着他的死亡，他所有的
+							成就都将湮灭。
+						</p>
+
+						<h3>灵性的修持</h3>
+						<p>
+							最后这一修持，使他有能力获得神性的诸德。他的灵魂，从与身体、智识和
+							心意的认同中——从那个虚妄的<em>"我"</em>，那个一直囚禁着它的牢笼
+							中——解脱出来，认出了它真正的<em>"我"</em>：<em>神我（Purusha）</em>。
+							神，那至高之父，赐下他的恩典，使灵魂得以飞向自己的国度——它的诞生之
+							地、它与生俱来的权利、它的目标。他成为 <em>至上之神我（Purushottama）</em>，
+							那至上者。
+						</p>
+						<p>
+							他变得遍在、遍知、全能，永恒地满怀喜乐，且不朽。
+						</p>
+						<p>
+							湿婆普里巴巴恳请每一个人去抵达它，并建议三种修持要一同奉行，而非
+							分而行之。起初，头两种占主导；到末了，第三种占主导。
+						</p>
+						<p>
+							<a href="/zh/teachings/right-living">阅读完整的教导，附有来源 →</a>
+						</p>
+					</div>
+				</div>
+			</section>
+	</div>
+</Layout>

@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Content as About } from '../../content/zh/about.md';
+---
+
+<Layout
+	title="关于本网站 — 湿婆普里巴巴"
+	description="关于这个专门介绍湿婆普里巴巴的非营利、开源网站：它的原则——永远非营利、学术严谨、尽可能最好的阅读体验，以及开源——和它的许可。"
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<About />
+			</article>
+		</div>
+	</div>
+</Layout>
