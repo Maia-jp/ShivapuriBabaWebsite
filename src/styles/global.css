@@ -66,6 +66,21 @@ html {
 	background-color: var(--color-selection);
 }
 
+/* Language switcher: a native <details> disclosure (zero JS). Hide the default
+   triangle marker (we draw our own chevron) and flip it subtly when open. */
+.lang-switcher summary {
+	list-style: none;
+}
+.lang-switcher summary::-webkit-details-marker {
+	display: none;
+}
+.lang-switcher summary svg {
+	transition: transform 150ms ease;
+}
+.lang-switcher[open] summary svg {
+	transform: rotate(180deg);
+}
+
 /* Visible, quiet focus for keyboard users (accessibility, pillar 3). */
 :focus-visible {
 	outline: 2px solid var(--color-text);

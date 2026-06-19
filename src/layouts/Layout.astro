@@ -11,7 +11,6 @@ import {
 	dir,
 	ogLocale,
 	hreflang,
-	localeShortLabel,
 	localeName,
 	LOCALES,
 } from '../i18n/ui';
@@ -142,31 +141,47 @@ const ogImageAlt =
 							))
 						}
 					</nav>
-					<div
-						class="flex items-center gap-x-2 text-sm text-[color:var(--color-muted)]"
-						aria-label={t.switcherLabel}
-					>
-						{
-							LOCALES.map((loc, i) => (
-								<>
-									{i > 0 && <span aria-hidden="true">·</span>}
-									<a
-										href={localeHref(loc)}
-										hreflang={hreflang[loc]}
-										lang={hreflang[loc]}
-										aria-current={loc === locale ? 'true' : undefined}
-										title={localeName[loc]}
-										class:list={[
-											'underline-offset-2 hover:text-[color:var(--color-text)] hover:underline',
-											loc === locale && 'font-medium text-[color:var(--color-text)]',
-										]}
-									>
-										{localeShortLabel[loc]}
-									</a>
-								</>
-							))
-						}
-					</div>
+					<details class="lang-switcher relative text-sm">
+						<summary
+							class="inline-flex cursor-pointer items-center gap-x-1 text-[color:var(--color-muted)] hover:text-[color:var(--color-text)]"
+							aria-label={`${t.switcherLabel}: ${localeName[locale]}`}
+						>
+							<span lang={hreflang[locale]}>{localeName[locale]}</span>
+							<svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+								<path
+									d="M2.5 4.5 6 8l3.5-3.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</summary>
+						<ul
+							class="absolute top-full end-0 z-10 mt-2 min-w-40 border border-[color:var(--color-border)] bg-[color:var(--color-bg)] py-1 text-start"
+						>
+							{
+								LOCALES.map((loc) => (
+									<li>
+										<a
+											href={localeHref(loc)}
+											hreflang={hreflang[loc]}
+											lang={hreflang[loc]}
+											aria-current={loc === locale ? 'page' : undefined}
+											class:list={[
+												'block whitespace-nowrap px-4 py-1.5 hover:bg-[color:var(--color-selection)] hover:text-[color:var(--color-text)]',
+												loc === locale
+													? 'font-medium text-[color:var(--color-text)]'
+													: 'text-[color:var(--color-muted)]',
+											]}
+										>
+											{localeName[loc]}
+										</a>
+									</li>
+								))
+							}
+						</ul>
+					</details>
 				</div>
 			</header>
 
