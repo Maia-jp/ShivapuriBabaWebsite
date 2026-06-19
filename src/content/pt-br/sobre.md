@@ -22,11 +22,13 @@ O design tem uma única tarefa: sair da frente da leitura. O site é feito para 
 
 ### 4. Código aberto
 
-O projeto pertence à comunidade. Seu código — e, onde os direitos permitem, seu conteúdo — é público, desenvolvido abertamente e livre para qualquer pessoa ler, auditar, aprimorar ou hospedar por conta própria.
+O projeto pertence à comunidade. Seu código — e, onde os direitos permitem, seu conteúdo — é público, desenvolvido abertamente e livre para qualquer pessoa ler, auditar, aprimorar ou hospedar por conta própria. O código-fonte está no [GitHub](https://github.com/Maia-jp/ShivapuriBabaWebsite).
 
 ## Correções e contribuições
 
 Por mirar num padrão acadêmico, este site às vezes estará errado, incompleto ou desatualizado. Se você encontrar um erro, uma afirmação sem fundamento ou uma fonte melhor, queremos sinceramente saber — correções e contribuições bem fundamentadas são bem-vindas.
+
+Você pode entrar em contato pelo e-mail [contact@shivapuri-baba.com](mailto:contact@shivapuri-baba.com).
 
 ## Licença
 

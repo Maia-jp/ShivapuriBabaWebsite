@@ -62,6 +62,11 @@ html {
 		"Kohinoor Devanagari", "Devanagari Sangam MN", "Mangal", serif;
 }
 
+:lang(zh) {
+	font-family: "EB Garamond Variable", "Noto Serif CJK SC", "Noto Serif SC",
+		"Songti SC", "Source Han Serif SC", "SimSun", serif;
+}
+
 ::selection {
 	background-color: var(--color-selection);
 }

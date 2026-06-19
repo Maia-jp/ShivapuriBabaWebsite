@@ -42,6 +42,11 @@ const articles = [
 		{ file: `${l}/books/index.html`, minChars: 3000, image: false },
 		{ file: `${l}/about/index.html`, minChars: 1000, image: false },
 	]),
+	// Chinese (Han script is far more compact — lower floors prove substance)
+	{ file: 'zh/biography/index.html', minChars: 3500, image: true },
+	{ file: 'zh/teachings/right-living/index.html', minChars: 2500, image: true },
+	{ file: 'zh/books/index.html', minChars: 2500, image: false },
+	{ file: 'zh/about/index.html', minChars: 600, image: false },
 ];
 
 // Utility/navigation pages that should NOT masquerade as articles.
@@ -51,6 +56,7 @@ const nonArticles = [
 	'ar/teachings/index.html',
 	'ne/teachings/index.html',
 	'hi/teachings/index.html',
+	'zh/teachings/index.html',
 	'404.html',
 ];
 
