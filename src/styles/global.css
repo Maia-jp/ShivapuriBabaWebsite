@@ -48,8 +48,42 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Non-Latin scripts: EB Garamond carries no Arabic or Devanagari glyphs, so
+   keep it first (for Latin book titles and names) and fall back to a quiet,
+   high-quality system font for each script — zero downloads, per the tech
+   stack's no-CDN ethos. */
+:lang(ar) {
+	font-family: "EB Garamond Variable", "Noto Naskh Arabic", "Geeza Pro", "Times New Roman", serif;
+}
+
+:lang(hi),
+:lang(ne) {
+	font-family: "EB Garamond Variable", "Noto Serif Devanagari", "Noto Sans Devanagari",
+		"Kohinoor Devanagari", "Devanagari Sangam MN", "Mangal", serif;
+}
+
+:lang(zh) {
+	font-family: "EB Garamond Variable", "Noto Serif CJK SC", "Noto Serif SC",
+		"Songti SC", "Source Han Serif SC", "SimSun", serif;
+}
+
 ::selection {
 	background-color: var(--color-selection);
+}
+
+/* Language switcher: a native <details> disclosure (zero JS). Hide the default
+   triangle marker (we draw our own chevron) and flip it subtly when open. */
+.lang-switcher summary {
+	list-style: none;
+}
+.lang-switcher summary::-webkit-details-marker {
+	display: none;
+}
+.lang-switcher summary svg {
+	transition: transform 150ms ease;
+}
+.lang-switcher[open] summary svg {
+	transform: rotate(180deg);
 }
 
 /* Visible, quiet focus for keyboard users (accessibility, pillar 3). */

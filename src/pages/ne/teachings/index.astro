@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// Add future teaching sub-pages here and they appear in the list below.
+const teachings = [
+	{
+		href: '/ne/teachings/right-living',
+		title: 'सद्जीवन (स्वधर्म)',
+		summary:
+			'बाबाको केन्द्रीय शिक्षा: तीन अनुशासन — शारीरिक, नैतिक र आध्यात्मिक — जुन सँगै मिलेर सद्जीवन बनाउँछन्, केवल प्रथम-हस्त स्रोतहरूबाट खिचिएको।',
+	},
+];
+---
+
+<Layout
+	title="शिवपुरी बाबाका शिक्षाहरू"
+	description="शिवपुरी बाबाका शिक्षाहरू — सद्जीवन, वा स्वधर्म — प्रथम-हस्त स्रोतहरूबाट प्रस्तुत, पूर्ण उद्धरणसहित।"
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>शिक्षाहरू</h1>
+				<p>
+					शिवपुरी बाबाले एउटै व्यावहारिक अनुशासन सिकाए जसलाई उहाँ
+					<strong>सद्जीवन</strong>, वा <em>स्वधर्म</em> भन्थे। यहाँका पृष्ठहरूले
+					यसलाई उहाँबाट सोझै सिक्नेहरूका अभिलेखबाट प्रस्तुत गर्छन्, स्रोतको पूर्ण
+					उद्धरणसहित।
+				</p>
+			</article>
+
+			<ul class="mt-10 space-y-8 border-t border-[color:var(--color-border)] pt-10">
+				{
+					teachings.map((t) => (
+						<li>
+							<a
+								href={t.href}
+								class="font-serif text-xl underline-offset-2 hover:underline"
+							>
+								{t.title}
+							</a>
+							<p class="mt-1 text-[color:var(--color-muted)]">{t.summary}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>

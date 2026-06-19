@@ -1,0 +1,107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as RightLiving } from '../../../content/ar/teachings/right-living.md';
+import dhrubasthaliPhoto from '../../../assets/shivapuri-baba-dhrubasthali.jpg';
+
+const site = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, site);
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'التعاليم',
+			item: new URL('/ar/teachings', site).href,
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'الحياة القويمة (Swadharma)',
+			item: canonicalURL.href,
+		},
+	],
+};
+
+const articleSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: 'الحياة القويمة (Swadharma): تعليم Sri Shivapuri Baba',
+	about: { '@type': 'Person', name: 'Shivapuri Baba' },
+	inLanguage: 'ar',
+	isPartOf: { '@type': 'CollectionPage', name: 'التعاليم', url: new URL('/ar/teachings', site).href },
+	url: canonicalURL.href,
+};
+---
+
+<Layout
+	title="الحياة القويمة (Swadharma) — تعليم شيفابوري بابا"
+	description="تعليم شيفابوري بابا المركزي، الحياة القويمة أو سوادهارما: ثلاث رياضات — بدنية وأخلاقية وروحية — مستمدّة فقط من مصادر مباشرة، مع توثيقٍ كامل."
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(breadcrumbSchema)}
+		is:inline
+	/>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(articleSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<nav
+				class="mb-8 text-xs text-[color:var(--color-muted)]"
+				aria-label="مسار التنقّل"
+			>
+				<a href="/ar/teachings" class="hover:text-[color:var(--color-text)]">التعاليم</a>
+				<span aria-hidden="true"> › </span>
+				<span aria-current="page">الحياة القويمة</span>
+			</nav>
+
+			<article class="prose">
+				<figure>
+					<Picture
+						src={dhrubasthaliPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1209]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="شيفابوري بابا جالساً في خلوته في دهروباستالي، خلف معبد باشوباتيناث، كاتماندو"
+						loading="eager"
+					/>
+					<figcaption>
+						شيفابوري بابا في خلوته في دهروباستالي، خلف معبد باشوباتيناث،
+						كاتماندو. هذه الصورة متداولة على نطاق واسع على الإنترنت؛ ولم يتسنَّ
+						إرجاعها إلى مصدرها الأصلي.
+					</figcaption>
+				</figure>
+				<RightLiving />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="متابعة القراءة"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">اقرأ بعد ذلك</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/ar/biography" class="underline-offset-2 hover:underline">السيرة</a
+						><span class="text-[color:var(--color-muted)]">
+							— حياة الرجل الذي علّمها، من مصادر مباشرة</span
+						>
+					</li>
+					<li>
+						<a href="/ar/books" class="underline-offset-2 hover:underline">الكتب والوسائط</a
+						><span class="text-[color:var(--color-muted)]">
+							— أين تجد المصادر، في الطباعة أو مجاناً للاستعارة</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>
