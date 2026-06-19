@@ -1,0 +1,106 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as RightLiving } from '../../../content/zh/teachings/right-living.md';
+import dhrubasthaliPhoto from '../../../assets/shivapuri-baba-dhrubasthali.jpg';
+
+const site = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, site);
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: '教导',
+			item: new URL('/zh/teachings', site).href,
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: '正命之道（Swadharma）',
+			item: canonicalURL.href,
+		},
+	],
+};
+
+const articleSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: '正命之道（Swadharma）：室利·湿婆普里巴巴的教导',
+	about: { '@type': 'Person', name: 'Shivapuri Baba' },
+	inLanguage: 'zh-Hans',
+	isPartOf: { '@type': 'CollectionPage', name: '教导', url: new URL('/zh/teachings', site).href },
+	url: canonicalURL.href,
+};
+---
+
+<Layout
+	title="正命之道（Swadharma） — 湿婆普里巴巴的教导"
+	description="湿婆普里巴巴的核心教导，正命之道或 Swadharma：三种修持——身体的、道德的与灵性的——仅取材于第一手来源，并附有完整的引注。"
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(breadcrumbSchema)}
+		is:inline
+	/>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(articleSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<nav
+				class="mb-8 text-xs text-[color:var(--color-muted)]"
+				aria-label="导航路径"
+			>
+				<a href="/zh/teachings" class="hover:text-[color:var(--color-text)]">教导</a>
+				<span aria-hidden="true"> › </span>
+				<span aria-current="page">正命之道</span>
+			</nav>
+
+			<article class="prose">
+				<figure>
+					<Picture
+						src={dhrubasthaliPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1209]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="湿婆普里巴巴在他的道场，位于 Dhrubasthali，在加德满都帕舒帕蒂纳特神庙后方"
+						loading="eager"
+					/>
+					<figcaption>
+						湿婆普里巴巴在他的道场，位于 Dhrubasthali，在加德满都帕舒帕蒂纳特
+						神庙的后方。此图在网络上广为流传；未能查明其原始来源。
+					</figcaption>
+				</figure>
+				<RightLiving />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="继续阅读"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">延伸阅读</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/zh/biography" class="underline-offset-2 hover:underline">传记</a
+						><span class="text-[color:var(--color-muted)]">
+							— 传授这一教导之人的生平，取材于第一手来源</span
+						>
+					</li>
+					<li>
+						<a href="/zh/books" class="underline-offset-2 hover:underline">书籍与媒体</a
+						><span class="text-[color:var(--color-muted)]">
+							— 到何处寻得这些来源，印刷本或免费借阅</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// Add future teaching sub-pages here and they appear in the list below.
+const teachings = [
+	{
+		href: '/hi/teachings/right-living',
+		title: 'सम्यक् जीवन (स्वधर्म)',
+		summary:
+			'बाबा की केंद्रीय शिक्षा: तीन अनुशासन — शारीरिक, नैतिक और आध्यात्मिक — जो मिलकर सम्यक् जीवन बनाते हैं, केवल प्रत्यक्ष स्रोतों से ली गई।',
+	},
+];
+---
+
+<Layout
+	title="शिवपुरी बाबा की शिक्षाएँ"
+	description="शिवपुरी बाबा की शिक्षाएँ — सम्यक् जीवन, या स्वधर्म — प्रत्यक्ष स्रोतों से प्रस्तुत, पूर्ण उद्धरणों सहित।"
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>शिक्षाएँ</h1>
+				<p>
+					शिवपुरी बाबा ने एक ही व्यावहारिक अनुशासन की शिक्षा दी जिसे वे
+					<strong>सम्यक् जीवन</strong>, या <em>स्वधर्म</em> कहते थे। यहाँ के पृष्ठ
+					उसे उन लोगों के अभिलेखों से प्रस्तुत करते हैं जिन्होंने इसे सीधे उनसे
+					सीखा, स्रोतों के पूर्ण उद्धरण सहित।
+				</p>
+			</article>
+
+			<ul class="mt-10 space-y-8 border-t border-[color:var(--color-border)] pt-10">
+				{
+					teachings.map((t) => (
+						<li>
+							<a
+								href={t.href}
+								class="font-serif text-xl underline-offset-2 hover:underline"
+							>
+								{t.title}
+							</a>
+							<p class="mt-1 text-[color:var(--color-muted)]">{t.summary}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>

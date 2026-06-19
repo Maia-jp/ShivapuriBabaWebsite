@@ -1,0 +1,107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as RightLiving } from '../../../content/hi/teachings/right-living.md';
+import dhrubasthaliPhoto from '../../../assets/shivapuri-baba-dhrubasthali.jpg';
+
+const site = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, site);
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'शिक्षाएँ',
+			item: new URL('/hi/teachings', site).href,
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'सम्यक् जीवन (स्वधर्म)',
+			item: canonicalURL.href,
+		},
+	],
+};
+
+const articleSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: 'सम्यक् जीवन (स्वधर्म): श्री शिवपुरी बाबा की शिक्षा',
+	about: { '@type': 'Person', name: 'Shivapuri Baba' },
+	inLanguage: 'hi',
+	isPartOf: { '@type': 'CollectionPage', name: 'शिक्षाएँ', url: new URL('/hi/teachings', site).href },
+	url: canonicalURL.href,
+};
+---
+
+<Layout
+	title="सम्यक् जीवन (स्वधर्म) — शिवपुरी बाबा की शिक्षा"
+	description="शिवपुरी बाबा की केंद्रीय शिक्षा, सम्यक् जीवन या स्वधर्म: तीन अनुशासन — शारीरिक, नैतिक और आध्यात्मिक —, केवल प्रत्यक्ष स्रोतों से ली गई, पूर्ण उद्धरणों सहित।"
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(breadcrumbSchema)}
+		is:inline
+	/>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(articleSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<nav
+				class="mb-8 text-xs text-[color:var(--color-muted)]"
+				aria-label="नेविगेशन पथ"
+			>
+				<a href="/hi/teachings" class="hover:text-[color:var(--color-text)]">शिक्षाएँ</a>
+				<span aria-hidden="true"> › </span>
+				<span aria-current="page">सम्यक् जीवन</span>
+			</nav>
+
+			<article class="prose">
+				<figure>
+					<Picture
+						src={dhrubasthaliPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1209]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="शिवपुरी बाबा अपने आश्रम में, ध्रुवस्थली में, पशुपतिनाथ मंदिर के पीछे, काठमांडू"
+						loading="eager"
+					/>
+					<figcaption>
+						शिवपुरी बाबा अपने आश्रम में, ध्रुवस्थली में, पशुपतिनाथ मंदिर के
+						पीछे, काठमांडू। यह चित्र ऑनलाइन व्यापक रूप से प्रसारित होता है; इसके
+						मूल स्रोत का पता लगाना संभव नहीं हुआ।
+					</figcaption>
+				</figure>
+				<RightLiving />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="पठन जारी रखें"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">आगे पढ़ें</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/hi/biography" class="underline-offset-2 hover:underline">जीवनी</a
+						><span class="text-[color:var(--color-muted)]">
+							— जिस व्यक्ति ने इसे सिखाया उसका जीवन, प्रत्यक्ष स्रोतों से</span
+						>
+					</li>
+					<li>
+						<a href="/hi/books" class="underline-offset-2 hover:underline">पुस्तकें और मीडिया</a
+						><span class="text-[color:var(--color-muted)]">
+							— स्रोतों को कहाँ पाएँ, मुद्रित या निःशुल्क उधार के लिए</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as Biography } from '../../content/ne/biography.md';
+import bennettPhoto from '../../assets/shivapuri-baba-bennett.jpg';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+
+// Structured data helps search engines understand the page is about a person.
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Shivapuri Baba',
+	alternateName: ['Sri Govindananda Bharati', 'Govindananda Bharati'],
+	birthDate: '1826',
+	deathDate: '1963-01-28',
+	birthPlace: 'South India',
+	description:
+		'भारतीय ऋषि र सन्न्यासी जसले नर्मदाको वनमा लामो तपस्यापछि ईश्वर-साक्षात्कार प्राप्त गरे र सद्जीवन (स्वधर्म) सिकाए। आफ्ना अन्तिम दशकहरू नेपालको काठमाडौं नजिक बिताए।',
+	url: canonicalURL.href,
+	sameAs: ['https://en.wikipedia.org/wiki/Shivapuri_Baba'],
+};
+---
+
+<Layout
+	title="शिवपुरी बाबाको जीवनी (१८२६–१९६३)"
+	description="शिवपुरी बाबा (श्री गोविन्दानन्द भारती, १८२६–१९६३) को जीवन, केवल प्रथम-हस्त प्रत्यक्षदर्शी स्रोतहरूबाट खिचिएको — मुख्यतः J. G. Bennett र Dr. Ainslie Meares —, पूर्ण उद्धरणसहित।"
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(personSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<figure>
+					<Picture
+						src={bennettPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1344]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="शिवपुरी बाबा, J. G. Bennett को काठमाडौं भ्रमणका क्रममा खिचिएको, १९६१–६२"
+						loading="eager"
+					/>
+					<figcaption>
+						शिवपुरी बाबा। फोटो सौजन्य
+						<a
+							href="https://www.jgbennett.org/tag/shivapuri-baba/"
+							target="_blank"
+							rel="noopener noreferrer">J. G. Bennett Foundation</a
+						>।
+					</figcaption>
+				</figure>
+				<Biography />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="पठन जारी राख्नुहोस्"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">अब यो पढ्नुहोस्</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/ne/teachings/right-living" class="underline-offset-2 hover:underline"
+							>सद्जीवन (स्वधर्म)</a
+						><span class="text-[color:var(--color-muted)]"> — पूर्ण रूपमा प्रस्तुत गरिएको शिक्षा</span>
+					</li>
+					<li>
+						<a href="/ne/books" class="underline-offset-2 hover:underline">पुस्तक र मिडिया</a
+						><span class="text-[color:var(--color-muted)]">
+							— स्रोतहरू कहाँ भेट्टाउने, छापामा वा नि:शुल्क उधारोका लागि</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>

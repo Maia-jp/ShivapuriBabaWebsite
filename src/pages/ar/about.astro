@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Content as About } from '../../content/ar/about.md';
+---
+
+<Layout
+	title="عن هذا الموقع — شيفابوري بابا"
+	description="عن هذا الموقع غير الربحي والمفتوح المصدر المكرَّس لشيفابوري بابا: مبادئه — غير ربحي، والصرامة الأكاديمية، وأفضل تجربة قراءة ممكنة، ومفتوح المصدر — ورخصته."
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<About />
+			</article>
+		</div>
+	</div>
+</Layout>

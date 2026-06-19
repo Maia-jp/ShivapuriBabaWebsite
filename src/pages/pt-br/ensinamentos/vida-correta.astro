@@ -1,0 +1,107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as RightLiving } from '../../../content/pt-br/ensinamentos/vida-correta.md';
+import dhrubasthaliPhoto from '../../../assets/shivapuri-baba-dhrubasthali.jpg';
+
+const site = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, site);
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Ensinamentos',
+			item: new URL('/pt-br/ensinamentos', site).href,
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Vida Correta (Swadharma)',
+			item: canonicalURL.href,
+		},
+	],
+};
+
+const articleSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: 'Vida Correta (Swadharma): O Ensinamento de Sri Shivapuri Baba',
+	about: { '@type': 'Person', name: 'Shivapuri Baba' },
+	inLanguage: 'pt-BR',
+	isPartOf: { '@type': 'CollectionPage', name: 'Ensinamentos', url: new URL('/pt-br/ensinamentos', site).href },
+	url: canonicalURL.href,
+};
+---
+
+<Layout
+	title="Vida Correta (Swadharma) — O Ensinamento de Shivapuri Baba"
+	description="O ensinamento central de Shivapuri Baba, a Vida Correta ou Swadharma: três disciplinas — física, moral e espiritual —, extraídas apenas de fontes de primeira mão, com citações completas."
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(breadcrumbSchema)}
+		is:inline
+	/>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(articleSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<nav
+				class="mb-8 text-xs text-[color:var(--color-muted)]"
+				aria-label="Trilha de navegação"
+			>
+				<a href="/pt-br/ensinamentos" class="hover:text-[color:var(--color-text)]">Ensinamentos</a>
+				<span aria-hidden="true"> › </span>
+				<span aria-current="page">Vida Correta</span>
+			</nav>
+
+			<article class="prose">
+				<figure>
+					<Picture
+						src={dhrubasthaliPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1209]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="Shivapuri Baba sentado em seu eremitério em Dhrubasthali, atrás do templo de Pashupatinath, Catmandu"
+						loading="eager"
+					/>
+					<figcaption>
+						Shivapuri Baba em seu eremitério em Dhrubasthali, atrás do templo
+						de Pashupatinath, Catmandu. Esta fotografia circula amplamente
+						on-line; não foi possível rastrear sua fonte original.
+					</figcaption>
+				</figure>
+				<RightLiving />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="Continuar a leitura"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">Leia a seguir</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/pt-br/biografia" class="underline-offset-2 hover:underline">Biografia</a
+						><span class="text-[color:var(--color-muted)]">
+							— a vida do homem que o ensinou, a partir de fontes de primeira mão</span
+						>
+					</li>
+					<li>
+						<a href="/pt-br/livros" class="underline-offset-2 hover:underline">Livros e Mídia</a
+						><span class="text-[color:var(--color-muted)]">
+							— onde encontrar as fontes, em catálogo ou para empréstimo gratuito</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>
