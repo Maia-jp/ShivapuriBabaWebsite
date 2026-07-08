@@ -47,6 +47,11 @@ const articles = [
 	{ file: 'zh/teachings/right-living/index.html', minChars: 2500, image: true },
 	{ file: 'zh/books/index.html', minChars: 2500, image: false },
 	{ file: 'zh/about/index.html', minChars: 600, image: false },
+	// Japanese (CJK + kana — compact, but the kana carry more characters than Han alone)
+	{ file: 'ja/biography/index.html', minChars: 4000, image: true },
+	{ file: 'ja/teachings/right-living/index.html', minChars: 3000, image: true },
+	{ file: 'ja/books/index.html', minChars: 2500, image: false },
+	{ file: 'ja/about/index.html', minChars: 700, image: false },
 ];
 
 // Utility/navigation pages that should NOT masquerade as articles.
@@ -57,6 +62,7 @@ const nonArticles = [
 	'ne/teachings/index.html',
 	'hi/teachings/index.html',
 	'zh/teachings/index.html',
+	'ja/teachings/index.html',
 	'404.html',
 ];
 

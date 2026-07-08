@@ -5,10 +5,11 @@ translation faithful and consistent, and the **decisions** taken along the way.
 It exists for the same reason the rest of the project is documented in the open:
 so the localization can be audited and improved (Pillars 2 and 4).
 
-> **Status:** Six locales live — English (default), Brazilian Portuguese
+> **Status:** Seven locales live — English (default), Brazilian Portuguese
 > (`pt-BR`), Arabic (`ar`, RTL), Nepali (`ne`), Hindi (`hi`), Chinese (`zh`,
-> Simplified). PT-BR's flagged review questions are resolved (§5); ar/ne/hi/zh
-> were produced for a fluent reader and need no review cycle.
+> Simplified), Japanese (`ja`). PT-BR's flagged review questions are resolved
+> (§5); ar/ne/hi/zh/ja were produced for a fluent reader and need no review
+> cycle.
 
 ---
 
@@ -29,11 +30,12 @@ own prefix; the source is never deleted.
   | `/books` | `/pt-br/livros` |
   | `/about` | `/pt-br/sobre` |
 
-- **Arabic, Nepali, Hindi, Chinese** use **English-style (ASCII) slugs** under
-  `/ar`, `/ne`, `/hi`, `/zh` — e.g. `/ar/biography`, `/ne/teachings/right-living`,
-  `/hi/books`, `/zh/about`. Native-script slugs would become percent-encoded,
-  opaque URLs; ASCII slugs under the locale prefix are the standard, practical
-  choice for non-Latin scripts.
+- **Arabic, Nepali, Hindi, Chinese, Japanese** use **English-style (ASCII)
+  slugs** under `/ar`, `/ne`, `/hi`, `/zh`, `/ja` — e.g. `/ar/biography`,
+  `/ne/teachings/right-living`, `/hi/books`, `/zh/about`, `/ja/biography`.
+  Native-script slugs would become percent-encoded, opaque URLs; ASCII slugs
+  under the locale prefix are the standard, practical choice for non-Latin
+  scripts.
 
 Rationale: "localize the website **to** X" means *adding* a locale, not deleting
 the source. Keeping all languages serves more readers (Pillar 1's mission to
@@ -42,29 +44,31 @@ reach "anyone who seeks it") and is non-destructive.
 **Mechanics:**
 - A quiet language switcher sits in the header as a native `<details>` dropdown
   (zero JS, Pillar 3): the summary shows the current language in its own script
-  and expands to all six (English, Português, العربية, नेपाली, हिन्दी, 中文). The
-  active language is marked; each entry carries its `hreflang`/`lang`.
+  and expands to all seven (English, Português, العربية, नेपाली, हिन्दी, 中文,
+  日本語). The active language is marked; each entry carries its `hreflang`/`lang`.
 - `<html lang>` and `<html dir>` are set per page. **Arabic renders RTL**
   (`dir="rtl"`); all others LTR. The CSS hyphenation engine uses each language's
   dictionary automatically.
 - **Fonts:** EB Garamond carries no Arabic/Devanagari/CJK glyphs, so `:lang(ar)`,
-  `:lang(hi)/:lang(ne)`, and `:lang(zh)` rules in `global.css` fall back to quiet
-  system fonts (Noto Naskh Arabic / Noto Serif Devanagari / Noto Serif CJK SC and
-  platform equivalents) — zero downloads, while Latin book titles and names still
-  render in EB Garamond.
-- Each page declares `<link rel="alternate" hreflang>` to all six locales plus
+  `:lang(hi)/:lang(ne)`, `:lang(zh)`, and `:lang(ja)` rules in `global.css` fall
+  back to quiet system fonts (Noto Naskh Arabic / Noto Serif Devanagari / Noto
+  Serif CJK SC / Noto Serif CJK JP — Mincho — and platform equivalents) — zero
+  downloads, while Latin book titles and names still render in EB Garamond.
+- Each page declares `<link rel="alternate" hreflang>` to all seven locales plus
   an `x-default` → English, and sets `og:locale` (+ `og:locale:alternate`).
 - Strings, nav labels, text direction, and the route pairing all live in
   `src/i18n/ui.ts`. Content: `src/content/<locale>/…`; pages: `src/pages/<locale>/…`.
 
-**Per-language key terms (ar/ne/hi/zh).** "Right Life / Right Living" (the
-concept): الحياة القويمة · सद्जीवन (ne) · सम्यक् जीवन (hi) · 正命之道 (zh). "sage"
-(never "mystic"): حكيم · ऋषि · ऋषि · 圣者. "God-realisation": تحقيق الله ·
-ईश्वर-साक्षात्कार · ईश्वर-साक्षात्कार · 证悟神. *Swadharma* and the yogic vocabulary
-are written in native Devanagari for ne/hi (स्वधर्म, विवेक, वैराग्य, ध्यान, समाधि…),
-in established Chinese (largely Buddhist) renderings for `zh` (三摩地, 禅那, 神我,
-明辨, 离欲…), and transliterated to Arabic script for `ar`. Book titles and author
-names stay in Latin in every locale.
+**Per-language key terms (ar/ne/hi/zh/ja).** "Right Life / Right Living" (the
+concept): الحياة القويمة · सद्जीवन (ne) · सम्यक् जीवन (hi) · 正命之道 (zh) ·
+正命の道 (ja). "sage" (never "mystic"): حكيم · ऋषि · ऋषि · 圣者 · 聖者.
+"God-realisation": تحقيق الله · ईश्वर-साक्षात्कार · ईश्वर-साक्षात्कार · 证悟神 ·
+神の実現. *Swadharma* and the yogic vocabulary are written in native Devanagari
+for ne/hi (स्वधर्म, विवेक, वैराग्य, ध्यान, समाधि…), in established Chinese (largely
+Buddhist) renderings for `zh` (三摩地, 禅那, 神我, 明辨, 离欲…), in established
+Japanese (largely Buddhist / Sanskrit-derived) renderings for `ja` (三昧, 禅那,
+神我, 識別, 離欲…), and transliterated to Arabic script for `ar`. Book titles and
+author names stay in Latin in every locale.
 
 ---
 
@@ -200,4 +204,13 @@ structured data). Developer-facing repo docs (`LICENSE`, `LICENSE-CONTENT.md`,
 design.
 
 **Q6 — Architecture → multilingual (not a replacement).** English stays the
-default at the root; PT-BR, Arabic, Nepali, and Hindi live under their prefixes.
+default at the root; PT-BR, Arabic, Nepali, Hindi, Chinese, and Japanese live
+under their prefixes.
+
+**Q7 — Japanese term choices → follow the CJK precedent.** `ja` mirrors `zh`:
+*Vairāgya* is rendered by its Sanskrit/Buddhist sense (離欲, "dispassion") rather
+than the English surface word "Devotion", and *Viveka* as 識別 (discernment, not
+社会的な差別). Yogic vocabulary uses established Japanese Buddhist forms (三昧,
+禅那, 神我, 凝念…) with the IAST kept in parentheses as the English does; book
+titles and personal names stay in Latin. In-text citations keep the author–date
+key, localizing only the connective (`and` → `・`) and `n.d.` → 刊行年不明.

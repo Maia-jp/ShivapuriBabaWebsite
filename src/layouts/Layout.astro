@@ -63,10 +63,11 @@ const alternates = routeKey
 	: [];
 const xDefaultHref = routeKey ? new URL(routes[routeKey].en, site).href : null;
 
-const ogImageAlt =
-	locale === 'pt-br'
-		? 'Retrato de Shivapuri Baba (1826–1963)'
-		: 'Portrait of Shivapuri Baba (1826–1963)';
+const ogImageAltByLocale: Partial<Record<typeof locale, string>> = {
+	'pt-br': 'Retrato de Shivapuri Baba (1826–1963)',
+	ja: 'シヴァプリ・ババの肖像（1826–1963）',
+};
+const ogImageAlt = ogImageAltByLocale[locale] ?? 'Portrait of Shivapuri Baba (1826–1963)';
 ---
 
 <html lang={htmlLang[locale]} dir={dir[locale]}>

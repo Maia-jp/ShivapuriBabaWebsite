@@ -67,6 +67,12 @@ html {
 		"Songti SC", "Source Han Serif SC", "SimSun", serif;
 }
 
+:lang(ja) {
+	font-family: "EB Garamond Variable", "Noto Serif CJK JP", "Noto Serif JP",
+		"Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho", "YuMincho",
+		"Source Han Serif JP", "MS Mincho", serif;
+}
+
 ::selection {
 	background-color: var(--color-selection);
 }

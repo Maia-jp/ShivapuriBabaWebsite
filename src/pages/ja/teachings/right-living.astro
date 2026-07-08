@@ -1,0 +1,107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import { Content as RightLiving } from '../../../content/ja/teachings/right-living.md';
+import dhrubasthaliPhoto from '../../../assets/shivapuri-baba-dhrubasthali.jpg';
+
+const site = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, site);
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: '教え',
+			item: new URL('/ja/teachings', site).href,
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: '正命の道（Swadharma）',
+			item: canonicalURL.href,
+		},
+	],
+};
+
+const articleSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: '正命の道（Swadharma）——室利・シヴァプリ・ババの教え',
+	about: { '@type': 'Person', name: 'Shivapuri Baba' },
+	inLanguage: 'ja',
+	isPartOf: { '@type': 'CollectionPage', name: '教え', url: new URL('/ja/teachings', site).href },
+	url: canonicalURL.href,
+};
+---
+
+<Layout
+	title="正命の道（Swadharma） — シヴァプリ・ババの教え"
+	description="シヴァプリ・ババの中心的な教え、正命の道すなわち Swadharma——身体的・道徳的・霊的な三つの修練——を一次資料のみにもとづき、完全な出典を付して示す。"
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(breadcrumbSchema)}
+		is:inline
+	/>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(articleSchema)}
+		is:inline
+	/>
+
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<nav
+				class="mb-8 text-xs text-[color:var(--color-muted)]"
+				aria-label="パンくずリスト"
+			>
+				<a href="/ja/teachings" class="hover:text-[color:var(--color-text)]">教え</a>
+				<span aria-hidden="true"> › </span>
+				<span aria-current="page">正命の道</span>
+			</nav>
+
+			<article class="prose">
+				<figure>
+					<Picture
+						src={dhrubasthaliPhoto}
+						formats={['avif', 'webp']}
+						widths={[672, 1008, 1209]}
+						sizes="(min-width: 768px) 672px, 100vw"
+						alt="シヴァプリ・ババ。カトマンズのパシュパティナート寺院の裏手、ドゥルバスタリの隠棲所にて"
+						loading="eager"
+					/>
+					<figcaption>
+						シヴァプリ・ババ。カトマンズのパシュパティナート寺院の裏手、
+						ドゥルバスタリの隠棲所にて。この写真は広くネット上に出まわっているが、
+						その原典は特定できなかった。
+					</figcaption>
+				</figure>
+				<RightLiving />
+			</article>
+
+			<nav
+				class="mt-16 border-t border-[color:var(--color-border)] pt-8 text-sm"
+				aria-label="続けて読む"
+			>
+				<p class="mb-3 text-[color:var(--color-muted)]">さらに読む</p>
+				<ul class="space-y-3">
+					<li>
+						<a href="/ja/biography" class="underline-offset-2 hover:underline">伝記</a
+						><span class="text-[color:var(--color-muted)]">
+							— この教えを説いた人物の生涯、一次資料にもとづく</span
+						>
+					</li>
+					<li>
+						<a href="/ja/books" class="underline-offset-2 hover:underline">書籍とメディア</a
+						><span class="text-[color:var(--color-muted)]">
+							— これらの資料をどこで見つけるか、在庫のあるものか無料の借覧か</span
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</Layout>

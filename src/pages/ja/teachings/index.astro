@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// Add future teaching sub-pages here and they appear in the list below.
+const teachings = [
+	{
+		href: '/ja/teachings/right-living',
+		title: '正命の道（Swadharma）',
+		summary:
+			'ババの中心的な教え——身体的・道徳的・霊的な三つの修練が、合わさって正命の道をかたちづくる。一次資料のみにもとづく。',
+	},
+];
+---
+
+<Layout
+	title="シヴァプリ・ババの教え"
+	description="シヴァプリ・ババの教え——正命の道、すなわち Swadharma——を一次資料から、完全な出典を付して示す。"
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<h1>教え</h1>
+				<p>
+					シヴァプリ・ババは、彼が <strong>正命の道</strong>、すなわち
+					<em>Swadharma</em> と呼んだ、ただ一つの実際的な修練を説きました。
+					ここのページは、それを彼から直接に学んだ人々の記録から、完全な
+					出典を付して示します。
+				</p>
+			</article>
+
+			<ul class="mt-10 space-y-8 border-t border-[color:var(--color-border)] pt-10">
+				{
+					teachings.map((t) => (
+						<li>
+							<a
+								href={t.href}
+								class="font-serif text-xl underline-offset-2 hover:underline"
+							>
+								{t.title}
+							</a>
+							<p class="mt-1 text-[color:var(--color-muted)]">{t.summary}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>
