@@ -3,14 +3,14 @@
 //
 // English is the default locale and lives at the site root (`/biography`, …).
 // Other locales live under a prefix: Brazilian Portuguese uses localized slugs
-// (`/pt-br/biografia`); Arabic, Nepali, Hindi and Chinese use English-style
-// slugs under `/ar`, `/ne`, `/hi`, `/zh` (clean URLs for non-Latin scripts).
-// See LOCALIZATION.md.
+// (`/pt-br/biografia`); Arabic, Nepali, Hindi, Chinese and Japanese use
+// English-style slugs under `/ar`, `/ne`, `/hi`, `/zh`, `/ja` (clean URLs for
+// non-Latin scripts). See LOCALIZATION.md.
 
-export type Locale = 'en' | 'pt-br' | 'ar' | 'ne' | 'hi' | 'zh';
+export type Locale = 'en' | 'pt-br' | 'ar' | 'ne' | 'hi' | 'zh' | 'ja';
 
 export const DEFAULT_LOCALE: Locale = 'en';
-export const LOCALES: Locale[] = ['en', 'pt-br', 'ar', 'ne', 'hi', 'zh'];
+export const LOCALES: Locale[] = ['en', 'pt-br', 'ar', 'ne', 'hi', 'zh', 'ja'];
 
 // Short label shown in the header language switcher.
 export const localeShortLabel: Record<Locale, string> = {
@@ -20,6 +20,7 @@ export const localeShortLabel: Record<Locale, string> = {
 	ne: 'NE',
 	hi: 'HI',
 	zh: 'ZH',
+	ja: 'JA',
 };
 
 // Full language name in its own script (used for the switcher's accessible labels).
@@ -30,6 +31,7 @@ export const localeName: Record<Locale, string> = {
 	ne: 'नेपाली',
 	hi: 'हिन्दी',
 	zh: '中文',
+	ja: '日本語',
 };
 
 // `<html lang>` value.
@@ -40,6 +42,7 @@ export const htmlLang: Record<Locale, string> = {
 	ne: 'ne',
 	hi: 'hi',
 	zh: 'zh-Hans',
+	ja: 'ja',
 };
 
 // Text direction for `<html dir>`. Arabic is right-to-left.
@@ -50,6 +53,7 @@ export const dir: Record<Locale, 'ltr' | 'rtl'> = {
 	ne: 'ltr',
 	hi: 'ltr',
 	zh: 'ltr',
+	ja: 'ltr',
 };
 
 // Open Graph locale (`og:locale`) value.
@@ -60,6 +64,7 @@ export const ogLocale: Record<Locale, string> = {
 	ne: 'ne_NP',
 	hi: 'hi_IN',
 	zh: 'zh_CN',
+	ja: 'ja_JP',
 };
 
 // BCP-47 tag used for hreflang alternates.
@@ -70,6 +75,7 @@ export const hreflang: Record<Locale, string> = {
 	ne: 'ne',
 	hi: 'hi',
 	zh: 'zh-Hans',
+	ja: 'ja',
 };
 
 interface NavItem {
@@ -159,6 +165,18 @@ export const ui: Record<Locale, Strings> = {
 		footerContact: '联系',
 		switcherLabel: '语言',
 	},
+	ja: {
+		nav: [
+			{ key: 'home', label: 'ホーム' },
+			{ key: 'biography', label: '生涯' },
+			{ key: 'teachings', label: '教え' },
+			{ key: 'books', label: '書籍とメディア' },
+		],
+		footerTagline: '非営利・オープンソースのプロジェクト',
+		footerAbout: 'このサイトについて',
+		footerContact: 'お問い合わせ',
+		switcherLabel: '言語',
+	},
 };
 
 // ---------------------------------------------------------------------------
@@ -170,7 +188,7 @@ export const ui: Record<Locale, Strings> = {
 export type RouteKey = 'home' | 'biography' | 'teachings' | 'rightLiving' | 'books' | 'about';
 
 export const routes: Record<RouteKey, Record<Locale, string>> = {
-	home: { en: '/', 'pt-br': '/pt-br', ar: '/ar', ne: '/ne', hi: '/hi', zh: '/zh' },
+	home: { en: '/', 'pt-br': '/pt-br', ar: '/ar', ne: '/ne', hi: '/hi', zh: '/zh', ja: '/ja' },
 	biography: {
 		en: '/biography',
 		'pt-br': '/pt-br/biografia',
@@ -178,6 +196,7 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
 		ne: '/ne/biography',
 		hi: '/hi/biography',
 		zh: '/zh/biography',
+		ja: '/ja/biography',
 	},
 	teachings: {
 		en: '/teachings',
@@ -186,6 +205,7 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
 		ne: '/ne/teachings',
 		hi: '/hi/teachings',
 		zh: '/zh/teachings',
+		ja: '/ja/teachings',
 	},
 	rightLiving: {
 		en: '/teachings/right-living',
@@ -194,6 +214,7 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
 		ne: '/ne/teachings/right-living',
 		hi: '/hi/teachings/right-living',
 		zh: '/zh/teachings/right-living',
+		ja: '/ja/teachings/right-living',
 	},
 	books: {
 		en: '/books',
@@ -202,6 +223,7 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
 		ne: '/ne/books',
 		hi: '/hi/books',
 		zh: '/zh/books',
+		ja: '/ja/books',
 	},
 	about: {
 		en: '/about',
@@ -210,6 +232,7 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
 		ne: '/ne/about',
 		hi: '/hi/about',
 		zh: '/zh/about',
+		ja: '/ja/about',
 	},
 };
 
@@ -220,6 +243,7 @@ const localePrefixes: [Locale, string][] = [
 	['ne', '/ne'],
 	['hi', '/hi'],
 	['zh', '/zh'],
+	['ja', '/ja'],
 ];
 
 /** Locale a given pathname belongs to (default locale for anything unprefixed). */

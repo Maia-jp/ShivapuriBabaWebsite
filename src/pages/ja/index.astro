@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import portrait from '../../assets/shivapuri-baba-portrait.jpg';
+---
+
+<Layout
+	title="シヴァプリ・ババ — 生涯・教え・三つの修練"
+	description="シヴァプリ・ババ（Shivapuri Baba、1826–1963）は、神の実現に達し、正命の道——三つの修練をとおして身体・知性・心・魂を完成へと導くこと——を説いた南インドの聖者。"
+>
+	<div class="py-10 md:py-16">
+		<section class="md:grid md:grid-cols-[minmax(0,19rem)_1fr] md:gap-14">
+				<!-- Portrait -->
+				<figure class="mb-10 md:mb-0 md:sticky md:top-12 md:self-start">
+					<div
+						class="aspect-[3/4] w-full overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-border)]"
+					>
+						<Picture
+							src={portrait}
+							formats={['avif', 'webp']}
+							widths={[304, 480]}
+							sizes="(min-width: 768px) 304px, 100vw"
+							alt="シヴァプリ・ババの肖像"
+							loading="eager"
+							class="h-full w-full object-cover"
+						/>
+					</div>
+					<figcaption class="mt-3 text-xs text-[color:var(--color-muted)]">
+						シヴァプリ・ババ（1826–1963）。この肖像はネット上に出まわっている
+						もので、信頼できる出典をたどることができなかった。
+					</figcaption>
+				</figure>
+
+				<!-- Biography -->
+				<article class="prose">
+					<h1>シヴァプリ・ババ</h1>
+					<p>
+						シヴァプリ・ババは1826年、南インドの裕福で学識ある婆羅門（バラモン）の
+						家に生まれ、遁世者（sannyasin）となる際に Govindananda Bharati という
+						出家名を授かった。
+					</p>
+					<p>
+						尊敬される占星術師であった祖父が、その師（グル）となった。相続財産を
+						放棄し——それを妹に譲って——彼はナルマダー川の源の森へと祖父に従った。
+						祖父の死ののち、彼はそこで深い独居に退き、こうして神を求める彼の
+						探求が始まった。
+					</p>
+					<p>
+						およそ二十五年にわたる厳しい苦行ののち、彼は神の実現に達した——それは、
+						彼の言葉によれば、すべての人間が達しなければならない最後の目的地で
+						あった。
+					</p>
+					<p>
+						それから、祖父が願ったとおり、彼は世界をめぐる大いなる巡礼に出た——
+						その多くは徒歩で、およそ四十年にわたって——そしてついにカトマンズ近郊の
+						山々に落ちつき、1963年に世を去るまで、あらゆる種類の求道者に正命の道を
+						説いた。
+					</p>
+					<p>彼の正命の道がもたらすものは何だろうか。</p>
+					<figure>
+						<blockquote>
+							<p>
+								とても単純なことです——身体・知性・心・魂を完成へと導くこと。
+							</p>
+						</blockquote>
+						<figcaption>— <cite>Shivapuri Baba</cite></figcaption>
+					</figure>
+					<p>
+						<a href="/ja/biography">出典を付した完全な伝記を読む →</a>
+					</p>
+				</article>
+			</section>
+
+			<!-- The Three Disciplines -->
+			<section class="mt-20 border-t border-[color:var(--color-border)] pt-16 md:mt-28">
+				<div class="mx-auto max-w-2xl">
+					<div class="prose">
+						<h2>三つの修練</h2>
+						<p>
+							シヴァプリ・ババは、あらゆる生きものが百パーセント自由になるには
+							この目標に達しなければならないと語った——なぜなら人は、すべての
+							生きものの冠として、それを成しとげうる唯一の存在だからである。
+							どのようにそれは成しとげられるのか。三つの修練——身体・心・霊の
+							修練——を行うことによってである。
+						</p>
+
+						<h3>身体の修練</h3>
+						<p>
+							身体の修練は、身体を健やかにすることで、求道者の身体と知性を
+							完成へと導く。同時に、自らの <em>swadharma</em>——自ら選んだ本分——の
+							内にとどまり、無益で有害な行いへと迷いこむことがないことで、彼は
+							自らの生活を成功した、豊かなものにする。彼は幸福になり、王のように
+							生きる。だが彼は、至高者たる神には達しえない。
+						</p>
+
+						<h3>心の修練</h3>
+						<p>
+							心の修練は心を飼いならし、その結果、心は諸感官とその対象に対して
+							命じ、制御する力をそなえるようになる。彼は自らの好みと嫌悪から
+							自由になる。臆測へも、不正な欲望や行いへも迷いこむことがない。
+							こうして彼は、さまざまな隠れた力に満ちた、幸福で成就した行者と
+							なる——だがなお、神には及ばない。その死とともに、彼のすべての
+							成就は消え去る。
+						</p>
+
+						<h3>霊の修練</h3>
+						<p>
+							この最後の修練が、彼に神的な性質を身につけさせる。彼の魂は、身体・
+							知性・心との同一視——それまで彼を閉じこめていた牢獄である、あの
+							偽りの<em>「私」</em>——から離れ、その真の<em>「私」</em>を知るに
+							いたる——すなわち<em>神我（Purusha）</em>である。父なる神が
+							その恩寵を授け、それによって魂は、その王国——その生誕の地、その
+							生まれながらの権利、その目標——へと飛び立つにふさわしいものとなる。
+							彼は<em>至高の神我（Purushottama）</em>、至高者となる。
+						</p>
+						<p>
+							彼は遍在し、全知にして、全能となり、とこしえに至福に満ち、
+							不死となる。
+						</p>
+						<p>
+							シヴァプリ・ババはすべての人にこれを成しとげるよう切に願い、三つの
+							修練を、切り離してではなく同時に行うよう勧める。はじめのうちは
+							最初の二つが優勢であり、終わりには三つ目が優勢になる。
+						</p>
+						<p>
+							<a href="/ja/teachings/right-living">出典を付した教えの全体を読む →</a>
+						</p>
+					</div>
+				</div>
+			</section>
+	</div>
+</Layout>

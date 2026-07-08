@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Content as About } from '../../content/ja/about.md';
+---
+
+<Layout
+	title="このサイトについて — シヴァプリ・ババ"
+	description="シヴァプリ・ババをあつかう、この非営利・オープンソースのウェブサイトについて。その原則——常に非営利、学術的な厳密さ、できるかぎり最良の読書体験、そしてオープンソース——とライセンス。"
+>
+	<div class="py-10 md:py-16">
+		<div class="mx-auto max-w-2xl">
+			<article class="prose">
+				<About />
+			</article>
+		</div>
+	</div>
+</Layout>
